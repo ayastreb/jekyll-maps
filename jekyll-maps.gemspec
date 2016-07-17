@@ -1,13 +1,13 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "jekyll-google-maps/version"
+require "jekyll-maps/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "jekyll-google-maps"
+  spec.name          = "jekyll-maps"
   spec.summary       = "Jekyll Google Maps integration"
   spec.description   = "Google Maps support in Jekyll blog to easily embed maps with posts' locations"
-  spec.version       = Jekyll::GoogleMaps::VERSION
+  spec.version       = Jekyll::Maps::VERSION
   spec.authors       = ["Anatoliy Yastreb"]
   spec.email         = ["anatoliy.yastreb@gmail.com"]
 
