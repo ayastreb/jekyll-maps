@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+- 2.3.0
+- 2.2
+- 2.1
+- 2.0
+script: script/cibuild
+sudo: false
+cache: bundler
