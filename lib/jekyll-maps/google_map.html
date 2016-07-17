@@ -1,0 +1,58 @@
+<div id='google-map'></div>
+
+<script type='text/javascript'>
+  var jekyllMaps = (function () {
+    'use strict';
+
+    return {
+      loadScript: function (url) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        document.body.appendChild(script);
+      },
+      initialize: function () {
+        this.options = {
+          center: new google.maps.LatLng(0, 0),
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          zoom: 3
+        }
+        this.map = new google.maps.Map(document.getElementById('google-map'), this.options);
+        this.showMarkers({{ locations }});
+      },
+      showMarkers: function (locations) {
+        var map = this.map,
+            bounds = new google.maps.LatLngBounds(),
+            markers = locations.map(function (location) {
+              var position = new google.maps.LatLng(location.latitude, location.longitude);
+              var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: location.title,
+                url: location.url
+              });
+
+              marker.addListener('click', function () {
+                if (this.url) {
+                  window.location.href = this.url;
+                }
+              });
+              bounds.extend(position);
+
+              return marker;
+            });
+
+        new MarkerClusterer(map, markers, {
+          gridSize: 25,
+          imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
+        });
+        map.fitBounds(bounds);
+      },
+    };
+  }());
+
+  window.onload = function () {
+    jekyllMaps.loadScript('https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js');
+    jekyllMaps.loadScript('http://maps.googleapis.com/maps/api/js?callback=jekyllMaps.initialize');
+  };
+</script>
