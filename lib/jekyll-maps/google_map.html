@@ -5,12 +5,6 @@
     'use strict';
 
     return {
-      loadScript: function (url) {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = url;
-        document.body.appendChild(script);
-      },
       initialize: function () {
         this.options = {
           center: new google.maps.LatLng(0, 0),
@@ -45,7 +39,7 @@
           imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
         });
         map.fitBounds(bounds);
-      },
+      }
     };
   }());
 </script>
