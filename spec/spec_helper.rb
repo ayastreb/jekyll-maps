@@ -1,6 +1,9 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "jekyll"
 require "jekyll-maps"
+require "codeclimate-test-reporter"
+
+CodeClimate::TestReporter.start
 
 Jekyll.logger.log_level = :error
 
