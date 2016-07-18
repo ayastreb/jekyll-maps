@@ -27,15 +27,13 @@
               var position = new google.maps.LatLng(location.latitude, location.longitude);
               var marker = new google.maps.Marker({
                 position: position,
-                map: map,
-                title: location.title,
-                url: location.url
+                title:    location.title,
+                url:      location.url,
+                map:      map
               });
 
               marker.addListener('click', function () {
-                if (this.url) {
-                  window.location.href = this.url;
-                }
+                window.location.href = this.url
               });
               bounds.extend(position);
 
