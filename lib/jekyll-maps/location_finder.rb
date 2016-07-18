@@ -2,29 +2,29 @@ module Jekyll
   module Maps
     class LocationFinder
       def initialize(options)
-        @options = options
+        @options   = options
+        @documents = []
       end
 
       def find(site)
-        matching_documents(site).map do |document|
+        site.collections.each { |_, collection| filter(collection.docs) }
+        site.data.each { |_, docs| filter(docs) }
+
+        @documents.map do |document|
           {
             :latitude  => document["location"]["latitude"],
             :longitude => document["location"]["longitude"],
             :title     => document["title"],
-            :url       => document.url
+            :url       => document["url"] || document.url
           }
         end
       end
 
       private
-      def matching_documents(site)
-        documents = []
-        site.collections.each do |_, collection|
-          collection.docs.each do |doc|
-            documents << doc if location?(doc) && match_filters?(doc)
-          end
+      def filter(docs)
+        docs.each do |doc|
+          @documents << doc if location?(doc) && match_filters?(doc)
         end
-        documents
       end
 
       private

@@ -26,7 +26,8 @@ RSpec.configure do |config|
   CONFIG_DEFAULTS = {
     "source"      => source_dir,
     "destination" => dest_dir,
-    "gems"        => ["jekyll-maps"]
+    "gems"        => ["jekyll-maps"],
+    "collections" => ["my_collection"]
   }.freeze
 
   def make_site(options = {})
