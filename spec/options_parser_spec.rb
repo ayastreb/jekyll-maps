@@ -5,7 +5,8 @@ describe Jekyll::Maps::OptionsParser do
     actual   = Jekyll::Maps::OptionsParser.parse(" foo_key : bar moo :  baz")
     expected = {
       :filters => {
-        "foo_key" => "bar"
+        "foo_key" => "bar",
+        "moo" => "baz"
       }
     }
 

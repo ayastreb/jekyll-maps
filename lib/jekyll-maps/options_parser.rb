@@ -1,7 +1,7 @@
 module Jekyll
   module Maps
     class OptionsParser
-      OPTIONS_SYNTAX = %r!([^\s]+)\s?:\s?([^\s]+)!
+      OPTIONS_SYNTAX = %r!([^\s]+)\s*:\s*([^\s]+)!
 
       class << self
         def parse(raw_options)
