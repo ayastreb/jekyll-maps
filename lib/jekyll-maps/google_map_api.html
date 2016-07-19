@@ -10,17 +10,19 @@
           zoom: 3
         }
       },
-      showMarkers: function (id, locations) {
-        var map = new google.maps.Map(document.getElementById(id), this.options),
-            bounds = new google.maps.LatLngBounds(),
+      create: function (id, locations) {
+        var bounds = new google.maps.LatLngBounds(),
+            map = new google.maps.Map(document.getElementById(id), this.options),
             markers = locations.map(function (location) {
-              var position = new google.maps.LatLng(location.latitude, location.longitude);
-              var marker = new google.maps.Marker({
-                position: position,
-                title:    location.title,
-                url:      location.url,
-                map:      map
-              });
+              var position = new google.maps.LatLng(
+                  location.latitude, location.longitude
+                  ),
+                  marker = new google.maps.Marker({
+                    position: position,
+                    title: location.title,
+                    url: location.url,
+                    map: map
+                  });
 
               bounds.extend(position);
               marker.addListener('click', function () {

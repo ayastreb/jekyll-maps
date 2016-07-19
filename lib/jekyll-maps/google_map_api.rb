@@ -1,6 +1,6 @@
 module Jekyll
   module Maps
-    class JsApi
+    class GoogleMapApi
       class << self
         def prepend_api_code(doc)
           doc.output.prepend(template.render!)
@@ -21,7 +21,7 @@ module Jekyll
         private
         def template_path
           @template_path ||= begin
-            File.expand_path("./js_api.html", File.dirname(__FILE__))
+            File.expand_path("./google_map_api.html", File.dirname(__FILE__))
           end
         end
       end
@@ -31,6 +31,6 @@ end
 
 Jekyll::Hooks.register [:pages, :documents], :post_render do |doc|
   if doc.output =~ %r!#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}!
-    Jekyll::Maps::JsApi.prepend_api_code(doc)
+    Jekyll::Maps::GoogleMapApi.prepend_api_code(doc)
   end
 end

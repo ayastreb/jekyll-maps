@@ -16,7 +16,7 @@ module Jekyll
         <<HTML
 <div id='#{map_id}'></div>
 <script type='text/javascript'>
-  #{JS_LIB_NAME}.showMarkers('#{map_id}', #{locations});
+  #{JS_LIB_NAME}.create('#{map_id}', #{locations});
 </script>
 HTML
       end
