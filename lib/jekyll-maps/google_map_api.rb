@@ -5,7 +5,6 @@ module Jekyll
 
       class << self
         def prepend_api_code(doc)
-          api_code = template.render!
           if doc.output =~ HEAD_END_TAG
             # Insert API code before header's end if this document has one.
             doc.output.gsub!(HEAD_END_TAG, %(#{api_code}#{Regexp.last_match}))
@@ -15,21 +14,28 @@ module Jekyll
         end
 
         private
-        def template
-          @template ||= Liquid::Template.parse(template_contents)
+        def api_code
+          <<HTML
+<script type='text/javascript'>
+  #{js_lib_contents}
+</script>
+<script async defer src='https://maps.googleapis.com/maps/api/js?callback=jekyllMaps.initializeMap'></script>
+<script async defer src='https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js'
+        onload='jekyllMaps.initializeCluster()'></script>
+HTML
         end
 
         private
-        def template_contents
-          @template_contents ||= begin
-            File.read(template_path)
+        def js_lib_contents
+          @js_lib_contents ||= begin
+            File.read(js_lib_path)
           end
         end
 
         private
-        def template_path
-          @template_path ||= begin
-            File.expand_path("./google_map_api.html", File.dirname(__FILE__))
+        def js_lib_path
+          @js_lib_path ||= begin
+            File.expand_path("./google_map_api.js", File.dirname(__FILE__))
           end
         end
       end

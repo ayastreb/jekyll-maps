@@ -17,7 +17,6 @@ ratings:
   - "**.inc"
   - "**.js"
   - "**.jsx"
-  - "**.html"
   - "**.module"
   - "**.php"
   - "**.py"
