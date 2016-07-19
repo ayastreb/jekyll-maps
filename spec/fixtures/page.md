@@ -1,5 +1,6 @@
 ---
 title: Test Page
+layout: default
 ---
 
 ** Jekyll Maps Plugin **
