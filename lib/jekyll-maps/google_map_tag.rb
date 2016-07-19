@@ -11,14 +11,23 @@ module Jekyll
 
       def render(context)
         locations = @finder.find(context.registers[:site])
-        map_id    = @args[:attributes][:id] || SecureRandom.uuid
+        @args[:attributes][:id] ||= SecureRandom.uuid
 
         <<HTML
-<div id='#{map_id}'></div>
+<div #{render_attributes}></div>
 <script type='text/javascript'>
-  #{JS_LIB_NAME}.create('#{map_id}', #{locations.to_json});
+  #{JS_LIB_NAME}.create('#{@args[:attributes][:id]}', #{locations.to_json});
 </script>
 HTML
+      end
+
+      private
+      def render_attributes
+        attributes = @args[:attributes].map do |attribute, value|
+          value = value.join(" ") if value.is_a?(Array)
+          %(#{attribute}='#{value}')
+        end
+        attributes.join(" ")
       end
     end
   end

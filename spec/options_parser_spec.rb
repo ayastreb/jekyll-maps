@@ -40,4 +40,20 @@ describe Jekyll::Maps::OptionsParser do
       expect(actual[:filters]).to eq(expected)
     end
   end
+
+  context "parses attributes" do
+    it "parses predefined attributes" do
+      actual   = Jekyll::Maps::OptionsParser.parse(
+        "id:foo width:100 height:50% class:my-css-class,another-class"
+      )
+      expected = {
+        :id     => "foo",
+        :width  => "100",
+        :height => "50%",
+        :class  => %w(my-css-class another-class)
+      }
+
+      expect(actual[:attributes]).to eq(expected)
+    end
+  end
 end

@@ -1,7 +1,13 @@
 module Jekyll
   module Maps
     class OptionsParser
-      OPTIONS_SYNTAX = %r!([^\s]+)\s*:\s*([^\s]+)!
+      OPTIONS_SYNTAX     = %r!([^\s]+)\s*:\s*([^\s]+)!
+      ALLOWED_ATTRIBUTES = %w(
+        id
+        width
+        height
+        class
+      ).freeze
 
       class << self
         def parse(raw_options)
@@ -11,7 +17,11 @@ module Jekyll
           }
           raw_options.scan(OPTIONS_SYNTAX).each do |key, value|
             value = value.split(",") if value.include?(",")
-            options[:filters][key] = value
+            if ALLOWED_ATTRIBUTES.include?(key)
+              options[:attributes][key.to_sym] = value
+            else
+              options[:filters][key] = value
+            end
           end
           options
         end
