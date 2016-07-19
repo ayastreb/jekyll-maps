@@ -3,7 +3,8 @@ module Jekyll
     class GoogleMapApi
       class << self
         def prepend_api_code(doc)
-          doc.output.prepend(template.render!)
+          api_code = template.render!
+          doc.output.prepend(api_code)
         end
 
         private

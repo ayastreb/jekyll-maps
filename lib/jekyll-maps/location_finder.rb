@@ -2,8 +2,8 @@ module Jekyll
   module Maps
     class LocationFinder
       def initialize(options)
-        @options   = options
         @documents = []
+        @options   = options
       end
 
       def find(site)

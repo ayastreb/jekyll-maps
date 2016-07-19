@@ -10,13 +10,13 @@ module Jekyll
       end
 
       def render(context)
-        locations = @finder.find(context.registers[:site]).to_json
+        locations = @finder.find(context.registers[:site])
         map_id    = @args[:attributes][:id] || SecureRandom.uuid
 
         <<HTML
 <div id='#{map_id}'></div>
 <script type='text/javascript'>
-  #{JS_LIB_NAME}.create('#{map_id}', #{locations});
+  #{JS_LIB_NAME}.create('#{map_id}', #{locations.to_json});
 </script>
 HTML
       end
