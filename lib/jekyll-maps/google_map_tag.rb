@@ -1,7 +1,9 @@
 module Jekyll
   module Maps
     class GoogleMapTag < Liquid::Tag
-      JS_LIB_NAME = "jekyllMaps".freeze
+      JS_LIB_NAME        = "jekyllMaps".freeze
+      DEFAULT_MAP_WIDTH  = 600
+      DEFAULT_MAP_HEIGHT = 400
 
       def initialize(_, args, _)
         @args   = OptionsParser.parse(args)
@@ -10,7 +12,7 @@ module Jekyll
       end
 
       def render(context)
-        locations = @finder.find(context.registers[:site])
+        locations               = @finder.find(context.registers[:site])
         @args[:attributes][:id] ||= SecureRandom.uuid
 
         <<HTML
@@ -23,11 +25,27 @@ HTML
 
       private
       def render_attributes
-        attributes = @args[:attributes].map do |attribute, value|
-          value = value.join(" ") if value.is_a?(Array)
-          %(#{attribute}='#{value}')
-        end
+        attributes = []
+        attributes << "id='#{@args[:attributes][:id]}'"
+        attributes << render_dimensions
+        attributes << render_class if @args[:attributes][:class]
         attributes.join(" ")
+      end
+
+      private
+      def render_dimensions
+        width       = @args[:attributes][:width] || DEFAULT_MAP_WIDTH
+        height      = @args[:attributes][:height] || DEFAULT_MAP_HEIGHT
+        width_unit  = width.to_s.include?("%") ? "" : "px"
+        height_unit = height.to_s.include?("%") ? "" : "px"
+        %(style='width:#{width}#{width_unit};height:#{height}#{height_unit};')
+      end
+
+      private
+      def render_class
+        css = @args[:attributes][:class]
+        css = css.join(" ") if css.is_a?(Array)
+        %(class='#{css}')
       end
     end
   end

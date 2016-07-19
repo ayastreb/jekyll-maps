@@ -21,17 +21,35 @@ describe Jekyll::Maps::GoogleMapTag do
   end
 
   context "options rendering" do
-    let(:page)    { make_page }
-    let(:site)    { make_site }
+    let(:page) { make_page }
+    let(:site) { make_site }
     let(:context) { make_context(:page => page, :site => site) }
-    let(:tag)     { "google_map" }
-    let(:options) { "id:foo width:100 height:50% class:baz,bar ignored:bad" }
-    let(:output)  do
-      Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
+    let(:tag) { "google_map" }
+
+    context "render all attributes" do
+      let(:options) { "id:foo width:100 height:50% class:baz,bar ignored:bad" }
+      let(:output) do
+        Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
+      end
+
+      it "renders attributes" do
+        expected = %r!div id='foo' style='width:100px;height:50%;' class='baz bar'!
+        expect(output).to match(expected)
+      end
     end
 
-    it "renders attributes" do
-      expect(output).to match(%r!div id='foo' width='100' height='50%' class='baz bar'!)
+    context "render default dimensions" do
+      let(:options) { "id:foo" }
+      let(:output) do
+        Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
+      end
+
+      it "renders dimensions with default values" do
+        width = Jekyll::Maps::GoogleMapTag::DEFAULT_MAP_WIDTH
+        height = Jekyll::Maps::GoogleMapTag::DEFAULT_MAP_HEIGHT
+        expected = %r!div id='foo' style='width:#{width}px;height:#{height}px;'!
+        expect(output).to match(expected)
+      end
     end
   end
 end
