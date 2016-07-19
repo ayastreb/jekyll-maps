@@ -49,7 +49,7 @@ Alternatively, you can add location info to your custom collection's documents o
       longitude: -3.8196204
   ```
   
-When you have your data ready, just add following tag to the page where you want to see the Map:
+When you have your data ready, just add following tag to the page where you want to see the map:
 
   ```
   {% google_map %}
