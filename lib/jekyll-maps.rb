@@ -1,3 +1,4 @@
+require "jekyll-maps/js_api"
 require "jekyll-maps/google_map_tag"
 require "jekyll-maps/location_finder"
 require "jekyll-maps/options_parser"

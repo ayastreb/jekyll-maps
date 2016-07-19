@@ -1,5 +1,3 @@
-<div id='google-map'></div>
-
 <script type='text/javascript'>
   var jekyllMaps = (function () {
     'use strict';
@@ -11,11 +9,9 @@
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           zoom: 3
         }
-        this.map = new google.maps.Map(document.getElementById('google-map'), this.options);
-        this.showMarkers({{ locations }});
       },
-      showMarkers: function (locations) {
-        var map = this.map,
+      showMarkers: function (id, locations) {
+        var map = new google.maps.Map(document.getElementById(id), this.options),
             bounds = new google.maps.LatLngBounds(),
             markers = locations.map(function (location) {
               var position = new google.maps.LatLng(location.latitude, location.longitude);
@@ -26,19 +22,19 @@
                 map:      map
               });
 
+              bounds.extend(position);
               marker.addListener('click', function () {
                 window.location.href = this.url
               });
-              bounds.extend(position);
 
               return marker;
             });
 
+        map.fitBounds(bounds);
         new MarkerClusterer(map, markers, {
           gridSize: 25,
           imagePath: 'https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
         });
-        map.fitBounds(bounds);
       }
     };
   }());

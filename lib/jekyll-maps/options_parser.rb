@@ -5,7 +5,10 @@ module Jekyll
 
       class << self
         def parse(raw_options)
-          options = { :filters => {} }
+          options = {
+            :attributes => {},
+            :filters    => {}
+          }
           raw_options.scan(OPTIONS_SYNTAX).each do |key, value|
             value = value.split(",") if value.include?(",")
             options[:filters][key] = value
