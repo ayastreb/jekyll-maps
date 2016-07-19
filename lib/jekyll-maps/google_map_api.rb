@@ -1,13 +1,14 @@
 module Jekyll
   module Maps
     class GoogleMapApi
-      BODY_TAG = %r!<body(.*)>!
+      HEAD_END_TAG = %r!</.*head.*>!
 
       class << self
         def prepend_api_code(doc)
           api_code = template.render!
-          if doc.output =~ BODY_TAG
-            doc.output.gsub!(BODY_TAG, %(#{Regexp.last_match}\n#{api_code}))
+          if doc.output =~ HEAD_END_TAG
+            # Insert API code before header's end if this document has one.
+            doc.output.gsub!(HEAD_END_TAG, %(#{api_code}#{Regexp.last_match}))
           else
             doc.output.prepend(api_code)
           end
