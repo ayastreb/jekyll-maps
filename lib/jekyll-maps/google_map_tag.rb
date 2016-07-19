@@ -17,7 +17,6 @@ module Jekyll
 <div #{render_attributes}></div>
 <script type='text/javascript'>
   #{JS_LIB_NAME}.register('#{@args[:attributes][:id]}', #{locations.to_json});
-  #{JS_LIB_NAME}.render();
 </script>
 HTML
       end
