@@ -1,0 +1,17 @@
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  {% for post in site.posts reversed %}
+  <div class="post" id="{{ post.anchor }}">
+    <a name="{{ post.anchor }}"></a>
+    <h1 class="post-title">
+      {{ post.title }}
+    </h1>
+
+    {{ post.content }}
+  </div>
+  {% endfor %}
+</div>
