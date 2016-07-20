@@ -4,3 +4,6 @@ Gemfile.lock
 tmp
 spec/dest
 coverage
+_site
+node_modules
+.DS_store
