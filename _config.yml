@@ -20,6 +20,10 @@ author:
 github:
   repo:           https://github.com/ayastreb/jekyll-maps
 
+maps:
+  google:
+    api_key:      'AIzaSyDiswWoiEpfb14st7-VcFPtzLimC5Bhr4k'
+
 gems:
   - jekyll-maps
   - redcarpet
