@@ -18,6 +18,10 @@ describe Jekyll::Maps::GoogleMapTag do
     it "includes external js only once" do
       expect(content.scan(%r!maps\.googleapis\.com!).length).to eq(1)
     end
+
+    it "renders API key" do
+      expect(content).to match(%r!maps/api/js\?key=GOOGLE_MAPS_API_KEY!)
+    end
   end
 
   context "options rendering" do
@@ -45,8 +49,8 @@ describe Jekyll::Maps::GoogleMapTag do
       end
 
       it "renders dimensions with default values" do
-        width = Jekyll::Maps::GoogleMapTag::DEFAULT_MAP_WIDTH
-        height = Jekyll::Maps::GoogleMapTag::DEFAULT_MAP_HEIGHT
+        width    = Jekyll::Maps::GoogleMapTag::DEFAULT_MAP_WIDTH
+        height   = Jekyll::Maps::GoogleMapTag::DEFAULT_MAP_HEIGHT
         expected = %r!div id='foo' style='width:#{width}px;height:#{height}px;'!
         expect(output).to match(expected)
       end

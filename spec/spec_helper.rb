@@ -27,7 +27,12 @@ RSpec.configure do |config|
     "source"      => source_dir,
     "destination" => dest_dir,
     "gems"        => ["jekyll-maps"],
-    "collections" => ["my_collection"]
+    "collections" => ["my_collection"],
+    "maps"        => {
+      "google" => {
+        "api_key" => "GOOGLE_MAPS_API_KEY"
+      }
+    }
   }.freeze
 
   def make_page(options = {})

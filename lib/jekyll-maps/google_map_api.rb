@@ -5,6 +5,7 @@ module Jekyll
 
       class << self
         def prepend_api_code(doc)
+          @config = doc.site.config
           if doc.output =~ HEAD_END_TAG
             # Insert API code before header's end if this document has one.
             doc.output.gsub!(HEAD_END_TAG, %(#{api_code}#{Regexp.last_match}))
@@ -15,11 +16,12 @@ module Jekyll
 
         private
         def api_code
+          api_key = @config.fetch("maps", {}).fetch("google", {}).fetch("api_key", "")
           <<HTML
 <script type='text/javascript'>
   #{js_lib_contents}
 </script>
-<script async defer src='https://maps.googleapis.com/maps/api/js?callback=jekyllMaps.initializeMap'></script>
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=#{api_key}&callback=jekyllMaps.initializeMap'></script>
 <script async defer src='https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js'
         onload='jekyllMaps.initializeCluster()'></script>
 HTML
