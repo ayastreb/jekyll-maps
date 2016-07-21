@@ -112,47 +112,40 @@
       <div class="post">
   <h1 class="post-title">Usage</h1>
   <span class="post-date">03 Jan 2016</span>
-  <p>First, add location information to your posts YAML front-matter:</p>
+  <h3>Data Source</h3>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _posts/2016-01-01-post.md</span>
+<p>First, add location information to your posts YAML front-matter:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _posts/2016-01-01-post.md</span>
   <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">latitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">51.5285582</span>
     <span class="l-Scalar-Plain">longitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">-0.2416807</span>
-  </code></pre></figure>
-
+</code></pre></div>
 <p>Alternatively, you can add location info to your custom collection&#39;s documents or even in data files:</p>
-
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _data/places.yaml</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _data/places.yaml</span>
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="s">&quot;Paris&quot;</span>
     <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;http://google.fr&quot;</span>
     <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
       <span class="l-Scalar-Plain">latitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">48.8587741</span>
       <span class="l-Scalar-Plain">longitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2.2074741</span>
-  
+
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="s">&quot;Madrid&quot;</span>
     <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;http://google.es&quot;</span>
     <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
       <span class="l-Scalar-Plain">latitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">40.4378698</span>
       <span class="l-Scalar-Plain">longitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">-3.8196204</span>
-  </code></pre></figure>
-
+</code></pre></div>
 <p>When you have your data ready, just add following tag to the page where you want to see the map:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">  {% google_map %}
-  </code></pre></figure>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map %}
+</code></pre></div>
 <p>You can configure map&#39;s dimensions and assign custom CSS class to the element:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width:100% height:400 class:my-map %}
+</code></pre></div>
+<h3>Filters</h3>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html">  {% google_map width:100% height:400 class:my-map %}
-  </code></pre></figure>
-
-<p>You can also filter which locations to display on the map!</p>
-
-<p>For instance, following tag will only display points from documents which have <code>lang: en</code> in their front-matter data.</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">  {% google_map lang:en %}
-  </code></pre></figure>
-
+<p>You can also filter which locations to display on the map!<br/>
+For instance, following tag will only display locations from documents which have <code>lang: en</code> in their front-matter data.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map lang:en %}
+</code></pre></div>
 </div>
 
 <div class="related">

@@ -225,21 +225,13 @@ It allows you to select which points to display on the map with different filter
       Installation
     </h1>
 
-    <ol>
-<li>Add the following to your site&#39;s <code>Gemfile</code>:</li>
-</ol>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">gem</span> <span class="s1">&#39;jekyll-maps&#39;</span>
-  </code></pre></figure>
-
-<ol>
-<li>Add the following to your site&#39;s <code>_config.yml</code>:</li>
-</ol>
-
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="l-Scalar-Plain">gems</span><span class="p-Indicator">:</span>
+    <p>1.&nbsp;Add the following to your site&#39;s <code>Gemfile</code>:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">gem</span> <span class="s1">&#39;jekyll-maps&#39;</span>
+</code></pre></div>
+<p>2.&nbsp;Add the following to your site&#39;s <code>_config.yml</code>:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="l-Scalar-Plain">gems</span><span class="p-Indicator">:</span>
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">jekyll-maps</span>
-  </code></pre></figure>
-
+</code></pre></div>
   </div>
   
   <div class="post" id="usage">
@@ -248,47 +240,40 @@ It allows you to select which points to display on the map with different filter
       Usage
     </h1>
 
-    <p>First, add location information to your posts YAML front-matter:</p>
+    <h3>Data Source</h3>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _posts/2016-01-01-post.md</span>
+<p>First, add location information to your posts YAML front-matter:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _posts/2016-01-01-post.md</span>
   <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">latitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">51.5285582</span>
     <span class="l-Scalar-Plain">longitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">-0.2416807</span>
-  </code></pre></figure>
-
+</code></pre></div>
 <p>Alternatively, you can add location info to your custom collection&#39;s documents or even in data files:</p>
-
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _data/places.yaml</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _data/places.yaml</span>
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="s">&quot;Paris&quot;</span>
     <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;http://google.fr&quot;</span>
     <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
       <span class="l-Scalar-Plain">latitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">48.8587741</span>
       <span class="l-Scalar-Plain">longitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2.2074741</span>
-  
+
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="s">&quot;Madrid&quot;</span>
     <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="s">&quot;http://google.es&quot;</span>
     <span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span>
       <span class="l-Scalar-Plain">latitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">40.4378698</span>
       <span class="l-Scalar-Plain">longitude</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">-3.8196204</span>
-  </code></pre></figure>
-
+</code></pre></div>
 <p>When you have your data ready, just add following tag to the page where you want to see the map:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">  {% google_map %}
-  </code></pre></figure>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map %}
+</code></pre></div>
 <p>You can configure map&#39;s dimensions and assign custom CSS class to the element:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width:100% height:400 class:my-map %}
+</code></pre></div>
+<h3>Filters</h3>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html">  {% google_map width:100% height:400 class:my-map %}
-  </code></pre></figure>
-
-<p>You can also filter which locations to display on the map!</p>
-
-<p>For instance, following tag will only display points from documents which have <code>lang: en</code> in their front-matter data.</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">  {% google_map lang:en %}
-  </code></pre></figure>
-
+<p>You can also filter which locations to display on the map!<br/>
+For instance, following tag will only display locations from documents which have <code>lang: en</code> in their front-matter data.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map lang:en %}
+</code></pre></div>
   </div>
   
   <div class="post" id="examples">
@@ -298,15 +283,29 @@ It allows you to select which points to display on the map with different filter
     </h1>
 
     <h3>Simple Map</h3>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map example:01 width:100% id:example-01 %}
+</code></pre></div>
 <div id='example-01' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
   jekyllMaps.register('example-01', [{"latitude":48.8587741,"longitude":2.2074741,"title":"Paris","url":"#example-01"},{"latitude":40.4378698,"longitude":-3.8196204,"title":"Madrid","url":"#example-01"}]);
 </script>
 
+<h3>Markers Clusterer Map</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map example:02 width:100% id:example-02 %}
+</code></pre></div>
+<div id='example-02' style='width:100%;height:400px;'></div>
+
+<script type='text/javascript'>
+  jekyllMaps.register('example-02', [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02"},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02"},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02"},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02"},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02"},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02"},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02"},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02"},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02"}]);
+</script>
+
   </div>
   
+</div>
+
+<div class="footer">
+  Made with ❤️ by <a href="https://github.com/ayastreb">@ayastreb</a>
 </div>
 
     </div>

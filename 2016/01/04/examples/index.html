@@ -208,11 +208,21 @@
   <h1 class="post-title">Examples</h1>
   <span class="post-date">04 Jan 2016</span>
   <h3>Simple Map</h3>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map example:01 width:100% id:example-01 %}
+</code></pre></div>
 <div id='example-01' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
   jekyllMaps.register('example-01', [{"latitude":48.8587741,"longitude":2.2074741,"title":"Paris","url":"#example-01"},{"latitude":40.4378698,"longitude":-3.8196204,"title":"Madrid","url":"#example-01"}]);
+</script>
+
+<h3>Markers Clusterer Map</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map example:02 width:100% id:example-02 %}
+</code></pre></div>
+<div id='example-02' style='width:100%;height:400px;'></div>
+
+<script type='text/javascript'>
+  jekyllMaps.register('example-02', [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02"},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02"},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02"},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02"},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02"},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02"},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02"},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02"},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02"}]);
 </script>
 
 </div>
