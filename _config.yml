@@ -10,6 +10,14 @@ source:           src
 title:            Jekyll Maps
 tagline:          'A Jekyll plugin to easily embed maps with filterable locations.'
 description:      'Easily embed GoogleMaps with locations from your Jekyll posts or data files.'
+keywords:
+  - jekyll plugin
+  - jekyll maps
+  - travel map
+  - contacts map
+  - embed google map
+  - show map in jekyll
+  - display map in blog
 url:              https://ayastreb.github.io/jekyll-maps/
 baseurl:          /jekyll-maps/
 
