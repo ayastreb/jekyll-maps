@@ -132,7 +132,7 @@ html {
 
 .content {
   padding-top:    4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 48em) {
@@ -175,6 +175,12 @@ html {
   }
 }
 
+.footer {
+  margin-top: 5rem;
+  font-size: .8rem;
+  text-align: center;
+  color: #7a7a7a;
+}
 
 
 /*
