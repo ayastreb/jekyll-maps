@@ -4,15 +4,14 @@ title: Installation
 anchor: installation
 ---
 
-1. Add the following to your site's `Gemfile`:
+1.&nbsp;Add the following to your site's `Gemfile`:
 
-  {% highlight ruby %}
+  ```ruby
   gem 'jekyll-maps'
-  {% endhighlight %}
+  ```
+2.&nbsp;Add the following to your site's `_config.yml`:
 
-2. Add the following to your site's `_config.yml`:
-
-  {% highlight yaml %}
+  ```yaml
   gems:
     - jekyll-maps
-  {% endhighlight %}
+  ```
