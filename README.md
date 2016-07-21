@@ -6,7 +6,10 @@
 [![Test Coverage](https://codeclimate.com/github/ayastreb/jekyll-maps/badges/coverage.svg)](https://codeclimate.com/github/ayastreb/jekyll-maps/coverage)
 [![Dependency Status](https://gemnasium.com/badges/github.com/ayastreb/jekyll-maps.svg)](https://gemnasium.com/github.com/ayastreb/jekyll-maps)
 
-Easily embed Google Maps with locations from your Jekyll posts, pages or data files.
+Jekyll Maps is a plugin that allows you to easily create different maps on your Jekyll site pages.
+It allows you to select which points to display on the map with different filters.
+
+GoogleMaps Marker Clusterer can be used if you have many points within close proximity.
 
 ## Installation
 
@@ -24,6 +27,8 @@ Easily embed Google Maps with locations from your Jekyll posts, pages or data fi
   ```
 
 ## Usage
+
+### Data Source
 
 First, add location information to your posts YAML front-matter:
 
@@ -60,16 +65,21 @@ You can configure map's dimensions and assign custom CSS class to the element:
   ```
   {% google_map width:100% height:400 class:my-map %}
   ```
+  
+### Filters
 
-You can also filter which locations to display on the map!
-
-For instance, following tag will only display points from documents which have `lang: en` in their front-matter data.
+You can also filter which locations to display on the map!<br/>
+For instance, following tag will only display locations from documents which have `lang: en` in their front-matter data.
 
   ```
   {% google_map lang:en %}
   ```
 
 If you have any questions or proposals - open up an [issue](https://github.com/ayastreb/jekyll-maps/issues/new)!
+
+## Examples
+
+Want to see it in action? Check out [Demo Page](https://ayastreb.github.io/jekyll-maps/#examples)!
 
 ## Contributing
 
