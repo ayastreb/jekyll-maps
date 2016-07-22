@@ -1,3 +1,7 @@
+## 1.1.2 / 2016-07-22
+
+* configurable marker cluster
+
 ## 1.1.1 / 2016-07-20
 
 * configure GoogleMaps API key from _config.yml
