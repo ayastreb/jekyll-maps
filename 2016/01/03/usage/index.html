@@ -159,6 +159,20 @@
 For instance, following tag will only display locations from documents which have <code>lang: en</code> in their front-matter data.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map lang:en %}
 </code></pre></div>
+<h3>Marker Cluster</h3>
+
+<p>By default <a href="https://github.com/googlemaps/js-marker-clusterer">Marker Clusterer</a> is enabled.
+If you have many markers on the map, it will group them and show icon with the count of markers in each cluster - <a href="https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html">See example</a></p>
+
+<p>If you don&#39;t want to use marker cluster, you can disable it globally in <code>_config.yml</code>:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="l-Scalar-Plain">maps</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">google</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">marker_cluster</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>Or you can disable it per single map tag:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map no_cluster %}
+</code></pre></div>
 </div>
 
 <div class="related">

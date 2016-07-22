@@ -74,9 +74,10 @@
      *
      * @param String id
      * @param Array locations
+     * @param Boolean useCluster
      */
-    function register(id, locations) {
-        this.data.push({id: id, locations: locations});
+    function register(id, locations, useCluster) {
+        this.data.push({id: id, locations: locations, useCluster: useCluster});
         this.render();
     }
 
@@ -93,8 +94,10 @@
                 markers = data.locations.map(createMarker);
 
             map.fitBounds(bounds);
-            this.maps.push({map: map, markers: markers});
-            this.processCluster();
+            if (data.useCluster) {
+                this.maps.push({map: map, markers: markers});
+                this.processCluster();
+            }
         }
 
         function createMarker(location) {
@@ -115,8 +118,9 @@
         }
     }
 
-    function initializeCluster() {
+    function initializeCluster(settings) {
         this.clusterReady = true;
+        this.clusterSettings = settings || {};
         this.processCluster();
     }
 
@@ -126,7 +130,7 @@
         while (this.maps.length > 0) {
             var obj = this.maps.pop();
             new MarkerClusterer(obj.map, obj.markers, {
-                gridSize: 25,
+                gridSize: this.clusterSettings.grid_size || 25,
                 imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
             });
         }
@@ -135,8 +139,10 @@
 
 </script>
 <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDiswWoiEpfb14st7-VcFPtzLimC5Bhr4k&callback=jekyllMaps.initializeMap'></script>
+
 <script async defer src='https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js'
-        onload='jekyllMaps.initializeCluster()'></script>
+        onload='jekyllMaps.initializeCluster({})'></script>
+
 </head>
 
 
@@ -287,6 +293,20 @@ It allows you to select which points to display on the map with different filter
 For instance, following tag will only display locations from documents which have <code>lang: en</code> in their front-matter data.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map lang:en %}
 </code></pre></div>
+<h3>Marker Cluster</h3>
+
+<p>By default <a href="https://github.com/googlemaps/js-marker-clusterer">Marker Clusterer</a> is enabled.
+If you have many markers on the map, it will group them and show icon with the count of markers in each cluster - <a href="https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html">See example</a></p>
+
+<p>If you don&#39;t want to use marker cluster, you can disable it globally in <code>_config.yml</code>:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="l-Scalar-Plain">maps</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">google</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">marker_cluster</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>Or you can disable it per single map tag:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map no_cluster %}
+</code></pre></div>
   </div>
   
   <div class="post" id="examples">
@@ -296,21 +316,32 @@ For instance, following tag will only display locations from documents which hav
     </h1>
 
     <h3>Simple Map</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map example:01 width:100% id:example-01 %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:01 width:100% id:example-01 %}
 </code></pre></div>
 <div id='example-01' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
-  jekyllMaps.register('example-01', [{"latitude":48.8587741,"longitude":2.2074741,"title":"Paris","url":"#example-01"},{"latitude":40.4378698,"longitude":-3.8196204,"title":"Madrid","url":"#example-01"}]);
+  jekyllMaps.register('example-01', [{"latitude":48.8587741,"longitude":2.2074741,"title":"Paris","url":"#example-01"},{"latitude":40.4378698,"longitude":-3.8196204,"title":"Madrid","url":"#example-01"}], true);
 </script>
 
-<h3>Markers Clusterer Map</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map example:02 width:100% id:example-02 %}
+<h3>Markers Cluster Map</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:02 width:100% id:example-02 %}
 </code></pre></div>
 <div id='example-02' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
-  jekyllMaps.register('example-02', [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02"},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02"},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02"},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02"},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02"},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02"},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02"},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02"},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02"}]);
+  jekyllMaps.register('example-02', [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02"},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02"},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02"},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02"},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02"},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02"},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02"},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02"},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02"}], true);
+</script>
+
+<h3>Markers Cluster Disabled</h3>
+
+<p>Same data set as in previous example, but without marker cluster.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:02 width:100% id:example-03 no_cluster %}
+</code></pre></div>
+<div id='example-03' style='width:100%;height:400px;'></div>
+
+<script type='text/javascript'>
+  jekyllMaps.register('example-03', [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02"},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02"},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02"},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02"},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02"},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02"},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02"},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02"},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02"}], false);
 </script>
 
   </div>
