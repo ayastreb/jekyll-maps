@@ -1,62 +1,62 @@
 - title: "New York Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 40.755965
     longitude: -73.994175
 
 - title: "New York Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 40.747296
     longitude: -73.9762767
 
 - title: "New York Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 40.7609
     longitude: -73.9713197
 
 - title: "Boston Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 42.367193
     longitude: -71.0545267
 
 - title: "Boston Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 42.364498
     longitude: -71.0588737
 
 - title: "Boston Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 42.3615104
     longitude: -71.0673652
 
 - title: "Boston Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 42.352571
     longitude: -71.0695776
 
 - title: "Boston Streets"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 42.351463
     longitude: -71.0777697
 
 - title: "New Heaven"
   url: "#example-02"
-  example: "02"
+  data_set: "02"
   location:
     latitude: 41.309442
     longitude: -72.9293737

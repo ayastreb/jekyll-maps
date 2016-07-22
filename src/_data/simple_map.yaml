@@ -1,13 +1,13 @@
 - title: "Paris"
   url: "#example-01"
-  example: "01"
+  data_set: "01"
   location:
     latitude: 48.8587741
     longitude: 2.2074741
 
 - title: "Madrid"
   url: "#example-01"
-  example: "01"
+  data_set: "01"
   location:
     latitude: 40.4378698
     longitude: -3.8196204
