@@ -78,7 +78,7 @@ For instance, following tag will only display locations from documents which hav
 ### Marker Cluster
 
 By default [Marker Clusterer](https://github.com/googlemaps/js-marker-clusterer) is enabled.
-If you have many markers on the map, it will group them and show icon with the count of markers in each cluster - [See example](https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html)
+If you have many markers on the map, it will group them and show icon with the count of markers in each cluster - [see example](https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html).
 
 If you don't want to use marker cluster, you can disable it globally in `_config.yml`:
 
