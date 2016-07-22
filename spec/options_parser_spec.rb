@@ -56,4 +56,15 @@ describe Jekyll::Maps::OptionsParser do
       expect(actual[:attributes]).to eq(expected)
     end
   end
+
+  context "parses flags" do
+    it "parses no_cluster flag correctly" do
+      actual   = Jekyll::Maps::OptionsParser.parse("foo:bar no_cluster")
+      expected = {
+        :no_cluster => true
+      }
+
+      expect(actual[:flags]).to eq(expected)
+    end
+  end
 end

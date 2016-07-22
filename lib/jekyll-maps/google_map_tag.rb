@@ -13,12 +13,13 @@ module Jekyll
 
       def render(context)
         locations               = @finder.find(context.registers[:site])
+        use_cluster             = @args[:flags][:no_cluster] ? "false" : "true"
         @args[:attributes][:id] ||= SecureRandom.uuid
 
         <<HTML
 <div #{render_attributes}></div>
 <script type='text/javascript'>
-  #{JS_LIB_NAME}.register('#{@args[:attributes][:id]}', #{locations.to_json});
+  #{JS_LIB_NAME}.register('#{@args[:attributes][:id]}', #{locations.to_json}, #{use_cluster});
 </script>
 HTML
       end

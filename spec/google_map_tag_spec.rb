@@ -24,6 +24,40 @@ describe Jekyll::Maps::GoogleMapTag do
     end
   end
 
+  context "marker cluster disabled" do
+    let(:site) do
+      make_site({
+        "maps" => {
+          "google" => {
+            "marker_cluster" => {
+              "enabled" => false
+            }
+          }
+        }
+      })
+    end
+    let(:content) { File.read(dest_dir("page.html")) }
+    before :each do
+      site.process
+    end
+
+    it "does not load marker cluster external script" do
+      expect(content).not_to match(%r!script.*src=.*markerclusterer\.js!)
+    end
+  end
+
+  context "marker cluster enabled by default" do
+    let(:site) { make_site }
+    let(:content) { File.read(dest_dir("page.html")) }
+    before :each do
+      site.process
+    end
+
+    it "does load marker clusterer external script" do
+      expect(content).to match(%r!script.*src=.*markerclusterer\.js!)
+    end
+  end
+
   context "options rendering" do
     let(:page) { make_page }
     let(:site) { make_site }
