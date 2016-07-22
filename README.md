@@ -75,6 +75,26 @@ For instance, following tag will only display locations from documents which hav
   {% google_map lang:en %}
   ```
 
+### Marker Cluster
+
+By default [Marker Clusterer](https://github.com/googlemaps/js-marker-clusterer) is enabled.
+If you have many markers on the map, it will group them and show icon with the count of markers in each cluster - [See example](https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html)
+
+If you don't want to use marker cluster, you can disable it globally in `_config.yml`:
+
+  ```yml
+  maps:
+    google:
+      marker_cluster:
+        enabled: false
+  ```
+
+Or you can disable it per single map tag:
+
+  ```
+  {% google_map no_cluster %}
+  ```
+
 If you have any questions or proposals - open up an [issue](https://github.com/ayastreb/jekyll-maps/issues/new)!
 
 ## Examples
