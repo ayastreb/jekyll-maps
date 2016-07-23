@@ -58,9 +58,10 @@ describe Jekyll::Maps::OptionsParser do
   end
 
   context "parses flags" do
-    it "parses no_cluster flag correctly" do
-      actual   = Jekyll::Maps::OptionsParser.parse("foo:bar no_cluster")
+    it "parses all allowed flags correctly" do
+      actual   = Jekyll::Maps::OptionsParser.parse("on_page no_cluster")
       expected = {
+        :on_page    => true,
         :no_cluster => true
       }
 

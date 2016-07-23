@@ -4,6 +4,7 @@ module Jekyll
       OPTIONS_SYNTAX     = %r!([^\s]+)\s*:\s*([^\s]+)!
       ALLOWED_FLAGS      = %w(
         no_cluster
+        on_page
       ).freeze
       ALLOWED_ATTRIBUTES = %w(
         id

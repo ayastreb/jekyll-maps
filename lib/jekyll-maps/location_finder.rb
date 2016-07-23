@@ -6,9 +6,13 @@ module Jekyll
         @options   = options
       end
 
-      def find(site)
-        site.collections.each { |_, collection| filter(collection.docs) }
-        site.data.each { |_, docs| filter(docs) }
+      def find(site, page)
+        if @options[:flags][:on_page]
+          @documents << page if location?(page)
+        else
+          site.collections.each { |_, collection| filter(collection.docs) }
+          site.data.each { |_, docs| filter(docs) }
+        end
 
         @documents.map do |document|
           {

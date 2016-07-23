@@ -2,15 +2,16 @@ require "spec_helper"
 
 describe Jekyll::Maps::LocationFinder do
   let(:site) { make_site }
+  let(:page) { make_page }
 
-  before do
+  before :each do
     site.process
   end
 
   context "looking for locations" do
-    let(:options) { { :filters => {} } }
-    let(:finder) { Jekyll::Maps::LocationFinder.new(options) }
-    let(:actual) { finder.find(site) }
+    let(:options) { Jekyll::Maps::OptionsParser.parse("") }
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
 
     it "finds posts with location" do
       expect(actual).to all(be_a(Hash))
@@ -33,15 +34,29 @@ describe Jekyll::Maps::LocationFinder do
   end
 
   context "filtering locations" do
-    let(:options) { { :filters => { "country" => "de" } } }
-    let(:finder) { Jekyll::Maps::LocationFinder.new(options) }
-    let(:actual) { finder.find(site) }
+    let(:options) { Jekyll::Maps::OptionsParser.parse("country:de") }
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
 
     it "finds only German locations" do
       expect(actual.empty?).to be_falsey
       actual.each do |location|
         expect(location).to include(:title => "Berlin")
       end
+    end
+  end
+
+  context "looking for on_page locations" do
+    let(:location) { { "location" => { "latitude" => 1, "longitude" => -1 } } }
+    let(:page)     { make_page(location) }
+    let(:options)  { Jekyll::Maps::OptionsParser.parse("on_page") }
+    let(:finder)   { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)   { finder.find(site, page) }
+
+    it "finds only location from given page" do
+      expect(actual.length).to eq(1)
+      expect(actual.first[:latitude]).to eq(location["location"]["latitude"])
+      expect(actual.first[:longitude]).to eq(location["location"]["longitude"])
     end
   end
 end

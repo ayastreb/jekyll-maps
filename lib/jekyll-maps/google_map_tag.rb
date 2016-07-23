@@ -12,8 +12,8 @@ module Jekyll
       end
 
       def render(context)
-        locations               = @finder.find(context.registers[:site])
-        use_cluster             = @args[:flags][:no_cluster] ? "false" : "true"
+        locations   = @finder.find(context.registers[:site], context.registers[:page])
+        use_cluster = @args[:flags][:no_cluster] ? "false" : "true"
         @args[:attributes][:id] ||= SecureRandom.uuid
 
         <<HTML
