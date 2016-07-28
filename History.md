@@ -1,3 +1,7 @@
+## 1.1.3 / 2016-07-28
+
+* on-page map flag
+
 ## 1.1.2 / 2016-07-22
 
 * configurable marker cluster
