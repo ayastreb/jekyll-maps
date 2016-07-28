@@ -63,7 +63,7 @@
         this.options = {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             center: new google.maps.LatLng(0, 0),
-            zoom: 3
+            zoom: 12
         }
         this.mapReady = true;
         this.render();
@@ -90,10 +90,12 @@
         while (this.data.length > 0) {
             var data = this.data.pop(),
                 bounds = new google.maps.LatLngBounds(),
-                map = new google.maps.Map(document.getElementById(data.id), this.options),
+                options = this.options,
+                map = new google.maps.Map(document.getElementById(data.id), options),
                 markers = data.locations.map(createMarker);
 
             map.fitBounds(bounds);
+            google.maps.event.addListenerOnce(map, 'bounds_changed', onBoundsChanged);
             if (data.useCluster) {
                 this.maps.push({map: map, markers: markers});
                 this.processCluster();
@@ -115,6 +117,12 @@
             });
 
             return marker;
+        }
+
+        function onBoundsChanged() {
+            if (this.getZoom() > options.zoom) {
+                this.setZoom(options.zoom);
+            }
         }
     }
 
@@ -261,6 +269,17 @@
 
 <script type='text/javascript'>
   jekyllMaps.register('example-03', [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02"},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02"},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02"},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02"},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02"},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02"},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02"},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02"},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02"}], false);
+</script>
+
+<h3>On-page Map</h3>
+
+<p>Location is taken from current page front-matter data.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map on_page width:100% %}
+</code></pre></div>
+<div id='12452619-4440-494f-9f81-3a455c227836' style='width:100%;height:400px;'></div>
+
+<script type='text/javascript'>
+  jekyllMaps.register('12452619-4440-494f-9f81-3a455c227836', [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/"}], true);
 </script>
 
 </div>
