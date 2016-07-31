@@ -1,3 +1,7 @@
+## 1.1.4 / 2016-07-31
+
+* open info window when marker is clicked
+
 ## 1.1.3 / 2016-07-28
 
 * on-page map flag
