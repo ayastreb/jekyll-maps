@@ -14,15 +14,7 @@ module Jekyll
           site.data.each { |_, docs| filter(docs) }
         end
 
-        @documents.map do |document|
-          {
-            :latitude  => document["location"]["latitude"],
-            :longitude => document["location"]["longitude"],
-            :title     => document["title"],
-            :url       => document["url"] || document.url,
-            :image     => document["image"] || ""
-          }
-        end
+        convert
       end
 
       private
@@ -41,6 +33,19 @@ module Jekyll
       def match_filters?(doc)
         @options[:filters].each do |key, value|
           return false if doc[key].nil? || doc[key] != value
+        end
+      end
+
+      private
+      def convert
+        @documents.map do |document|
+          {
+            :latitude  => document["location"]["latitude"],
+            :longitude => document["location"]["longitude"],
+            :title     => document["title"],
+            :url       => document["url"] || document.url,
+            :image     => document["image"] || ""
+          }
         end
       end
     end
