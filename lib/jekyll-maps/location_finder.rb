@@ -19,7 +19,8 @@ module Jekyll
             :latitude  => document["location"]["latitude"],
             :longitude => document["location"]["longitude"],
             :title     => document["title"],
-            :url       => document["url"] || document.url
+            :url       => document["url"] || document.url,
+            :image     => document["image"] || ""
           }
         end
       end
