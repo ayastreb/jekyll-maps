@@ -99,7 +99,7 @@ If you have any questions or proposals - open up an [issue](https://github.com/a
 
 ## Examples
 
-Want to see it in action? Check out [Demo Page](https://ayastreb.github.io/jekyll-maps/#examples)!
+Want to see it in action? Check out [Demo Page](https://ayastreb.me/jekyll-maps/#examples)!
 
 ## Contributing
 
