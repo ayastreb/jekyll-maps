@@ -21,7 +21,7 @@ module Jekyll
   #{JS_LIB_NAME}.register(
     '#{@args[:attributes][:id]}',
     #{locations.to_json},
-    #{map_settings.to_json}
+    #{map_options.to_json}
   );
 </script>
 HTML
@@ -53,7 +53,7 @@ HTML
       end
 
       private
-      def map_settings
+      def map_options
         {
           :useCluster      => !@args[:flags][:no_cluster],
           :showMarkerPopup => @args[:attributes][:show_popup] != "false"
