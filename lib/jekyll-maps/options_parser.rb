@@ -11,6 +11,7 @@ module Jekyll
         width
         height
         class
+        show_popup
       ).freeze
 
       class << self

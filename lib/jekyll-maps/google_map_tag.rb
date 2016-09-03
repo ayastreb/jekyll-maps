@@ -12,14 +12,17 @@ module Jekyll
       end
 
       def render(context)
-        locations   = @finder.find(context.registers[:site], context.registers[:page])
-        use_cluster = @args[:flags][:no_cluster] ? "false" : "true"
+        locations = @finder.find(context.registers[:site], context.registers[:page])
         @args[:attributes][:id] ||= SecureRandom.uuid
 
         <<HTML
 <div #{render_attributes}></div>
 <script type='text/javascript'>
-  #{JS_LIB_NAME}.register('#{@args[:attributes][:id]}', #{locations.to_json}, #{use_cluster});
+  #{JS_LIB_NAME}.register(
+    '#{@args[:attributes][:id]}',
+    #{locations.to_json},
+    #{map_settings.to_json}
+  );
 </script>
 HTML
       end
@@ -47,6 +50,14 @@ HTML
         css = @args[:attributes][:class]
         css = css.join(" ") if css.is_a?(Array)
         %(class='#{css}')
+      end
+
+      private
+      def map_settings
+        {
+          useCluster: !@args[:flags][:no_cluster],
+          showMarkerPopup: @args[:attributes][:show_popup] != 'false'
+        }
       end
     end
   end

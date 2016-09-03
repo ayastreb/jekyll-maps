@@ -31,7 +31,7 @@ HTML
             .fetch("google", {})
             .fetch("api_key", "")
           <<HTML
-<script async defer src='https://maps.googleapis.com/maps/api/js?key=#{api_key}&callback=jekyllMaps.initializeMap'></script>
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=#{api_key}&callback=#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeMap'></script>
 HTML
         end
 
@@ -43,7 +43,7 @@ HTML
           return unless settings.fetch("enabled", true)
           <<HTML
 <script async defer src='https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js'
-        onload='jekyllMaps.initializeCluster(#{settings.to_json})'></script>
+        onload='#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeCluster(#{settings.to_json})'></script>
 HTML
         end
 
