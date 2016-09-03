@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Anatoliy Yastreb"]
   spec.email         = ["anatoliy.yastreb@gmail.com"]
 
-  spec.homepage      = "https://github.com/ayastreb/jekyll-google-maps"
+  spec.homepage      = "https://github.com/ayastreb/jekyll-maps"
   spec.licenses      = ["MIT"]
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|spec|features)/!) }
   spec.require_paths = ["lib"]
