@@ -55,8 +55,8 @@ HTML
       private
       def map_settings
         {
-          useCluster: !@args[:flags][:no_cluster],
-          showMarkerPopup: @args[:attributes][:show_popup] != 'false'
+          :useCluster      => !@args[:flags][:no_cluster],
+          :showMarkerPopup => @args[:attributes][:show_popup] != "false"
         }
       end
     end
