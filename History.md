@@ -1,3 +1,7 @@
+## 1.1.5 / 2016-09-03
+
+* allow to disable marker popup on the map
+
 ## 1.1.4 / 2016-07-31
 
 * open info window when marker is clicked
