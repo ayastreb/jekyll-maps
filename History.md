@@ -1,3 +1,7 @@
+## 1.1.6 / 2016-09-07
+* fix #15 - broken page if there is <header> tag used
+* allow setting custom zoom level with `zoom:10` attribute
+
 ## 1.1.5 / 2016-09-03
 
 * allow to disable marker popup on the map
