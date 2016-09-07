@@ -59,7 +59,7 @@ HTML
           :showMarkerPopup => @args[:attributes][:show_popup] != "false"
         }
         if @args[:attributes][:zoom]
-          opts[:zoom] = @args[:attributes][:zoom].to_i
+          opts[:customZoom] = @args[:attributes][:zoom].to_i
         end
         opts
       end
