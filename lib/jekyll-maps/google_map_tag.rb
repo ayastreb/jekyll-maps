@@ -54,11 +54,14 @@ HTML
 
       private
       def map_options
-        {
+        opts = {
           :useCluster      => !@args[:flags][:no_cluster],
-          :showMarkerPopup => @args[:attributes][:show_popup] != "false",
-          :zoom            => @args[:attributes][:zoom].to_i
+          :showMarkerPopup => @args[:attributes][:show_popup] != "false"
         }
+        if @args[:attributes][:zoom]
+          opts[:zoom] = @args[:attributes][:zoom].to_i
+        end
+        opts
       end
     end
   end
