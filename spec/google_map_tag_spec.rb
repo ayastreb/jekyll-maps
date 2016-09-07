@@ -2,10 +2,7 @@ require "spec_helper"
 
 describe Jekyll::Maps::GoogleMapTag do
   let(:site) { make_site }
-
-  before do
-    site.process
-  end
+  before { site.process }
 
   context "full page rendering" do
     let(:content) { File.read(dest_dir("page.html")) }
