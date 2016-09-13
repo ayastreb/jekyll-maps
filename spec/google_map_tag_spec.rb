@@ -62,13 +62,18 @@ describe Jekyll::Maps::GoogleMapTag do
     let(:tag) { "google_map" }
 
     context "render all attributes" do
-      let(:options) { "id:foo width:100 height:50% class:baz,bar ignored:bad" }
+      let(:options) { "id:foo width:100 height:50% class:baz,bar ignored:bad zoom:5" }
       let(:output) do
         Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
       end
 
       it "renders attributes" do
         expected = %r!div id='foo' style='width:100px;height:50%;' class='baz bar'!
+        expect(output).to match(expected)
+      end
+
+      it "renders custom zoom setting" do
+        expected = %r!"customZoom":5!
         expect(output).to match(expected)
       end
     end
