@@ -1,4 +1,5 @@
 require "securerandom"
+require "ostruct"
 require "jekyll-maps/google_map_api"
 require "jekyll-maps/google_map_tag"
 require "jekyll-maps/location_finder"

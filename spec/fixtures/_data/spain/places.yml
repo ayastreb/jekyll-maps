@@ -1,0 +1,8 @@
+- title: Madrid
+  url: http://google.es
+  location:
+    latitude: 40.4378698
+    longitude: -3.8196204
+
+- title: Not a place
+  url: http://yahoo.com

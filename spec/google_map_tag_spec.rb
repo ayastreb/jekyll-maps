@@ -62,7 +62,9 @@ describe Jekyll::Maps::GoogleMapTag do
     let(:tag) { "google_map" }
 
     context "render all attributes" do
-      let(:options) { "id:foo width:100 height:50% class:baz,bar ignored:bad zoom:5" }
+      let(:options) do
+        "id='foo' width='100' height='50%' class='baz,bar' ignored='bad' zoom='5'"
+      end
       let(:output) do
         Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
       end
@@ -79,7 +81,7 @@ describe Jekyll::Maps::GoogleMapTag do
     end
 
     context "render default dimensions" do
-      let(:options) { "id:foo" }
+      let(:options) { "id='foo'" }
       let(:output) do
         Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
       end

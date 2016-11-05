@@ -5,4 +5,4 @@ layout: default
 
 ** Jekyll Maps Plugin **
 
-{% google_map width:600 height:400 %}
+{% google_map src="_posts" width="600" height="400" %}
