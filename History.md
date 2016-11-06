@@ -1,3 +1,9 @@
+## 2.0.0 / 2016-11-06
+
+* change default behaviour to load location from current page
+* removed on-page flag
+* change attributes syntax to HTML-style
+
 ## 1.1.6 / 2016-09-07
 * fix #15 - broken page if there is <header> tag used
 * allow setting custom zoom level with `zoom:10` attribute
