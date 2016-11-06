@@ -309,7 +309,16 @@ It allows you to select which points to display on the map with different filter
       Usage
     </h1>
 
-    <h3>Data Source</h3>
+    <h3>Configure Google API Key</h3>
+
+<p>To be able to use Google Maps you need to obtain <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">API Key</a>.</p>
+
+<p>Once you have your API Key you need to add it to Jekyll&#39;s <code>_config.yml</code>:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="l-Scalar-Plain">maps</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">google</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">api_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;YOUR_KEY&gt;</span>
+</code></pre></div>
+<h3>Data Source</h3>
 
 <p>First, add location information to your posts YAML front-matter:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _posts/2016-01-01-post.md</span>
@@ -386,11 +395,11 @@ If you have many markers on the map, it will group them and show icon with the c
 <p>Marker on-click popup is disabled wiht <code>show_popup</code> attribute.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width=&quot;100%&quot; show_popup=&quot;false&quot; zoom=&quot;10&quot; %}
 </code></pre></div>
-<div id='8e75959c-fae3-44c0-bbf9-ac47b509bdd1' style='width:100%;height:400px;'></div>
+<div id='90f5235f-12d0-4b46-bf94-c4e1454bac62' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
   jekyllMaps.register(
-    '8e75959c-fae3-44c0-bbf9-ac47b509bdd1',
+    '90f5235f-12d0-4b46-bf94-c4e1454bac62',
     [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
     {"useCluster":true,"showMarkerPopup":false,"customZoom":10}
   );

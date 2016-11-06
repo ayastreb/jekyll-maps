@@ -133,7 +133,16 @@
       <div class="post">
   <h1 class="post-title">Usage</h1>
   <span class="post-date">03 Jan 2016</span>
-  <h3>Data Source</h3>
+  <h3>Configure Google API Key</h3>
+
+<p>To be able to use Google Maps you need to obtain <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">API Key</a>.</p>
+
+<p>Once you have your API Key you need to add it to Jekyll&#39;s <code>_config.yml</code>:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="l-Scalar-Plain">maps</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">google</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">api_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;YOUR_KEY&gt;</span>
+</code></pre></div>
+<h3>Data Source</h3>
 
 <p>First, add location information to your posts YAML front-matter:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># _posts/2016-01-01-post.md</span>
