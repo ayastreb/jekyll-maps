@@ -28,6 +28,18 @@ GoogleMaps Marker Clusterer can be used if you have many points within close pro
 
 ## Usage
 
+### Configure Google API Key
+
+To be able to use Google Maps you need to obtain [API Key](https://developers.google.com/maps/documentation/javascript/get-api-key).
+
+Once you have your API Key you need to add it to Jekyll's `_config.yml`:
+
+  ```yml
+  maps:
+    google:
+      api_key: <YOUR_KEY>
+  ```
+
 ### Data Source
 
 First, add location information to your posts YAML front-matter:
