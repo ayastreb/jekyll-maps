@@ -334,17 +334,28 @@ It allows you to select which points to display on the map with different filter
 <p>If your post has an <code>image</code> in its front-matter data, this image will be used as a content for the popup when marker is clicked.
 Otherwise simple &quot;View&quot; text link will be placed in the popup.</p>
 
-<p>When you have your data ready, just add following tag to the page where you want to see the map:</p>
+<p>By default this plugin will display location from the page it&#39;s placed on:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map %}
 </code></pre></div>
+<p>But you can use <code>src</code> attribute to load locations from other places, like posts, collections or data files!</p>
+
+<p>For example, this map will show locations from all posts from 2016:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_posts/2016&quot; %}
+</code></pre></div>
+<p>This map will show locations from a collection called &#39;my_collection&#39;:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_collections/my_collection&quot; %}
+</code></pre></div>
+<p>This map will show locations from all data files located in &#39;my_points&#39; sub-folder:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/my_points&quot; %}
+</code></pre></div>
 <p>You can configure map&#39;s dimensions and assign custom CSS class to the element:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width:100% height:400 class:my-map %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width=&quot;100%&quot; height=&quot;400&quot; class=&quot;my-map&quot; %}
 </code></pre></div>
 <h3>Filters</h3>
 
 <p>You can also filter which locations to display on the map!<br/>
-For instance, following tag will only display locations from documents which have <code>lang: en</code> in their front-matter data.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map lang:en %}
+For instance, following tag will only display locations from posts which have <code>lang: en</code> in their front-matter data.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_posts&quot; lang=&quot;en&quot; %}
 </code></pre></div>
 <h3>Marker Cluster</h3>
 
@@ -368,8 +379,29 @@ If you have many markers on the map, it will group them and show icon with the c
       Examples
     </h1>
 
-    <h3>Simple Map</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:01 width:100% id:example-01 %}
+    <h3>Basic Map</h3>
+
+<p>Location is taken from current page YAML front-matter data.</p>
+
+<p>Marker on-click popup is disabled wiht <code>show_popup</code> attribute.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width=&quot;100%&quot; show_popup=&quot;false&quot; zoom=&quot;10&quot; %}
+</code></pre></div>
+<div id='8e75959c-fae3-44c0-bbf9-ac47b509bdd1' style='width:100%;height:400px;'></div>
+
+<script type='text/javascript'>
+  jekyllMaps.register(
+    '8e75959c-fae3-44c0-bbf9-ac47b509bdd1',
+    [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
+    {"useCluster":true,"showMarkerPopup":false,"customZoom":10}
+  );
+</script>
+
+<h3>Load locations from data files</h3>
+
+<p>You can use <code>src</code> attribute to specify where plugin should look for locations.</p>
+
+<p>It can be data files, collections or posts.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/simple&quot; width=&quot;100%&quot; id=&quot;example-01&quot; %}
 </code></pre></div>
 <div id='example-01' style='width:100%;height:400px;'></div>
 
@@ -382,7 +414,7 @@ If you have many markers on the map, it will group them and show icon with the c
 </script>
 
 <h3>Markers Cluster Map</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:02 width:100% id:example-02 %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/cluster&quot; width=&quot;100%&quot; id=&quot;example-02&quot; %}
 </code></pre></div>
 <div id='example-02' style='width:100%;height:400px;'></div>
 
@@ -397,7 +429,7 @@ If you have many markers on the map, it will group them and show icon with the c
 <h3>Markers Cluster Disabled</h3>
 
 <p>Same data set as in previous example, but without marker cluster.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:02 width:100% id:example-03 no_cluster %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/cluster&quot; width=&quot;100%&quot; id=&quot;example-03&quot; no_cluster %}
 </code></pre></div>
 <div id='example-03' style='width:100%;height:400px;'></div>
 
@@ -406,22 +438,6 @@ If you have many markers on the map, it will group them and show icon with the c
     'example-03',
     [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02","image":""},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02","image":""},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02","image":""},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02","image":""}],
     {"useCluster":false,"showMarkerPopup":true}
-  );
-</script>
-
-<h3>On-page Map</h3>
-
-<p>Location is taken from current page front-matter data.
-Marker on click popup is disabled wiht <code>show_popup:false</code> attribute.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map on_page width:100% show_popup:false zoom:10 %}
-</code></pre></div>
-<div id='f3521cef-9dd9-42ab-b22e-94bac4780f02' style='width:100%;height:400px;'></div>
-
-<script type='text/javascript'>
-  jekyllMaps.register(
-    'f3521cef-9dd9-42ab-b22e-94bac4780f02',
-    [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
-    {"useCluster":true,"showMarkerPopup":false,"customZoom":10}
   );
 </script>
 

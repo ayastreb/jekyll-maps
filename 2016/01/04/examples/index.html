@@ -276,8 +276,29 @@ if (typeof Object.assign !== 'function') {
       <div class="post">
   <h1 class="post-title">Examples</h1>
   <span class="post-date">04 Jan 2016</span>
-  <h3>Simple Map</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:01 width:100% id:example-01 %}
+  <h3>Basic Map</h3>
+
+<p>Location is taken from current page YAML front-matter data.</p>
+
+<p>Marker on-click popup is disabled wiht <code>show_popup</code> attribute.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width=&quot;100%&quot; show_popup=&quot;false&quot; zoom=&quot;10&quot; %}
+</code></pre></div>
+<div id='8e75959c-fae3-44c0-bbf9-ac47b509bdd1' style='width:100%;height:400px;'></div>
+
+<script type='text/javascript'>
+  jekyllMaps.register(
+    '8e75959c-fae3-44c0-bbf9-ac47b509bdd1',
+    [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
+    {"useCluster":true,"showMarkerPopup":false,"customZoom":10}
+  );
+</script>
+
+<h3>Load locations from data files</h3>
+
+<p>You can use <code>src</code> attribute to specify where plugin should look for locations.</p>
+
+<p>It can be data files, collections or posts.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/simple&quot; width=&quot;100%&quot; id=&quot;example-01&quot; %}
 </code></pre></div>
 <div id='example-01' style='width:100%;height:400px;'></div>
 
@@ -290,7 +311,7 @@ if (typeof Object.assign !== 'function') {
 </script>
 
 <h3>Markers Cluster Map</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:02 width:100% id:example-02 %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/cluster&quot; width=&quot;100%&quot; id=&quot;example-02&quot; %}
 </code></pre></div>
 <div id='example-02' style='width:100%;height:400px;'></div>
 
@@ -305,7 +326,7 @@ if (typeof Object.assign !== 'function') {
 <h3>Markers Cluster Disabled</h3>
 
 <p>Same data set as in previous example, but without marker cluster.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map data_set:02 width:100% id:example-03 no_cluster %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/cluster&quot; width=&quot;100%&quot; id=&quot;example-03&quot; no_cluster %}
 </code></pre></div>
 <div id='example-03' style='width:100%;height:400px;'></div>
 
@@ -314,22 +335,6 @@ if (typeof Object.assign !== 'function') {
     'example-03',
     [{"latitude":40.755965,"longitude":-73.994175,"title":"New York Streets","url":"#example-02","image":""},{"latitude":40.747296,"longitude":-73.9762767,"title":"New York Streets","url":"#example-02","image":""},{"latitude":40.7609,"longitude":-73.9713197,"title":"New York Streets","url":"#example-02","image":""},{"latitude":42.367193,"longitude":-71.0545267,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.364498,"longitude":-71.0588737,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.3615104,"longitude":-71.0673652,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.352571,"longitude":-71.0695776,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":42.351463,"longitude":-71.0777697,"title":"Boston Streets","url":"#example-02","image":""},{"latitude":41.309442,"longitude":-72.9293737,"title":"New Heaven","url":"#example-02","image":""}],
     {"useCluster":false,"showMarkerPopup":true}
-  );
-</script>
-
-<h3>On-page Map</h3>
-
-<p>Location is taken from current page front-matter data.
-Marker on click popup is disabled wiht <code>show_popup:false</code> attribute.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map on_page width:100% show_popup:false zoom:10 %}
-</code></pre></div>
-<div id='f3521cef-9dd9-42ab-b22e-94bac4780f02' style='width:100%;height:400px;'></div>
-
-<script type='text/javascript'>
-  jekyllMaps.register(
-    'f3521cef-9dd9-42ab-b22e-94bac4780f02',
-    [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
-    {"useCluster":true,"showMarkerPopup":false,"customZoom":10}
   );
 </script>
 

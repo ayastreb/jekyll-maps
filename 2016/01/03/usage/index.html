@@ -158,17 +158,28 @@
 <p>If your post has an <code>image</code> in its front-matter data, this image will be used as a content for the popup when marker is clicked.
 Otherwise simple &quot;View&quot; text link will be placed in the popup.</p>
 
-<p>When you have your data ready, just add following tag to the page where you want to see the map:</p>
+<p>By default this plugin will display location from the page it&#39;s placed on:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map %}
 </code></pre></div>
+<p>But you can use <code>src</code> attribute to load locations from other places, like posts, collections or data files!</p>
+
+<p>For example, this map will show locations from all posts from 2016:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_posts/2016&quot; %}
+</code></pre></div>
+<p>This map will show locations from a collection called &#39;my_collection&#39;:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_collections/my_collection&quot; %}
+</code></pre></div>
+<p>This map will show locations from all data files located in &#39;my_points&#39; sub-folder:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_data/my_points&quot; %}
+</code></pre></div>
 <p>You can configure map&#39;s dimensions and assign custom CSS class to the element:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width:100% height:400 class:my-map %}
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map width=&quot;100%&quot; height=&quot;400&quot; class=&quot;my-map&quot; %}
 </code></pre></div>
 <h3>Filters</h3>
 
 <p>You can also filter which locations to display on the map!<br/>
-For instance, following tag will only display locations from documents which have <code>lang: en</code> in their front-matter data.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map lang:en %}
+For instance, following tag will only display locations from posts which have <code>lang: en</code> in their front-matter data.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map src=&quot;_posts&quot; lang=&quot;en&quot; %}
 </code></pre></div>
 <h3>Marker Cluster</h3>
 
