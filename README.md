@@ -54,16 +54,36 @@ Alternatively, you can add location info to your custom collection's documents o
       longitude: -3.8196204
   ```
   
-When you have your data ready, just add following tag to the page where you want to see the map:
+By default this plugin will display location from the page it's placed on:
 
   ```
   {% google_map %}
   ```
   
+But you can use src attribute to load locations from other places, like posts, collections or data files!
+
+For example, this map will show locations from all posts from 2016:
+  
+  ```
+  {% google_map src="_posts/2016" %}
+  ```
+  
+This map will show locations from a collection called 'my_collection':
+
+  ```
+  {% google_map src="_collections/my_collection" %}
+  ```
+  
+This map will show locations from all data files located in 'my_points' sub-folder:
+
+  ```
+  {% google_map src="_data/my_points" %}
+  ```
+
 You can configure map's dimensions and assign custom CSS class to the element:
 
   ```
-  {% google_map width:100% height:400 class:my-map %}
+  {% google_map width="100%" height="400" class="my-map" %}
   ```
   
 ### Filters
@@ -72,7 +92,7 @@ You can also filter which locations to display on the map!<br/>
 For instance, following tag will only display locations from documents which have `lang: en` in their front-matter data.
 
   ```
-  {% google_map lang:en %}
+  {% google_map src="_posts" lang="en" %}
   ```
 
 ### Marker Cluster
