@@ -2,3 +2,4 @@
 
 bundle exec rspec --color $@
 bundle exec rubocop -S -D
+codeclimate-test-reporter
