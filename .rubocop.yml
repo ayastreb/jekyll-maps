@@ -12,6 +12,9 @@ Lint/UselessAccessModifier:
   Enabled: false
 Metrics/AbcSize:
   Max: 20
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
 Metrics/ClassLength:
   Max: 300
   Exclude:
