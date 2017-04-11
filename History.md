@@ -1,3 +1,8 @@
+## 2.0.1 / 2017-04-11
+
+* add option to hide markers (show_marker="false")
+* do not show link in marker popup when no URL is set
+
 ## 2.0.0 / 2016-11-06
 
 * change default behaviour to load location from current page
