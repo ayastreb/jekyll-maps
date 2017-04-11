@@ -92,4 +92,16 @@ describe Jekyll::Maps::LocationFinder do
       expect(actual.first[:longitude]).to eq(location["location"]["longitude"])
     end
   end
+
+  context "skip url if location does not have it" do
+    let(:options) { Jekyll::Maps::OptionsParser.parse("src='_data/no_url'") }
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
+
+    it "finds location without link" do
+      location = actual.find { |l| l[:title] == "No link" }
+      expect(location).to be_a(Hash)
+      expect(location[:url]).to eq("")
+    end
+  end
 end

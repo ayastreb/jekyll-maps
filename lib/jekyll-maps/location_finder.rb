@@ -72,10 +72,17 @@ module Jekyll
             :latitude  => document["location"]["latitude"],
             :longitude => document["location"]["longitude"],
             :title     => document["title"],
-            :url       => document["url"] || document.url,
+            :url       => fetch_url(document),
             :image     => document["image"] || ""
           }
         end
+      end
+
+      private
+      def fetch_url(document)
+        return document["url"] if document.is_a?(Hash) && document.key?("url")
+        return document.url if document.respond_to? :url
+        return ""
       end
     end
   end
