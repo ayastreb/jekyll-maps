@@ -22,6 +22,10 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Max: 8
 Metrics/LineLength:
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - jekyll-maps.gemspec
   Max: 90
   Severity: warning
 Metrics/MethodLength:
@@ -116,4 +120,8 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 Style/UnneededCapitalW:
+  Enabled: false
+Style/IndentHeredoc:
+  Enabled: false
+Style/SymbolArray:
   Enabled: false
