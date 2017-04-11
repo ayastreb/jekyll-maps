@@ -10,6 +10,7 @@ module Jekyll
         width
         height
         class
+        show_marker
         show_popup
         zoom
       ).freeze
