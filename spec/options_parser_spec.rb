@@ -48,6 +48,16 @@ describe Jekyll::Maps::OptionsParser do
 
       expect(actual[:filters]).to eq(expected)
     end
+
+    it "parses multiple words in argument" do
+      actual = Jekyll::Maps::OptionsParser.parse("foo='bar baz' moo = 'mar maz'")
+      expected = {
+        "foo" => "bar baz",
+        "moo" => "mar maz"
+      }
+
+      expect(actual[:filters]).to eq(expected)
+    end
   end
 
   context "parses attributes" do
