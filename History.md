@@ -1,3 +1,7 @@
+## 2.0.2 / 2017-04-24
+
+* allow multi-word filters (fix #25)
+
 ## 2.0.1 / 2017-04-11
 
 * add option to hide markers (show_marker="false")
