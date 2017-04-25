@@ -27,9 +27,8 @@ HTML
 
         private
         def load_google_maps_api
-          api_key = @config.fetch("maps", {})
-            .fetch("google", {})
-            .fetch("api_key", "")
+          api_key = @config.fetch("site", {})
+            .fetch("GOOGLE_MAPS_API_KEY", "")
           <<HTML
 <script async defer src='https://maps.googleapis.com/maps/api/js?key=#{api_key}&callback=#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeMap'></script>
 HTML
