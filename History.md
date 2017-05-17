@@ -1,3 +1,7 @@
+## 2.0.3 / 2017-05-17
+
+* load locations from specific data file (fix #26)
+
 ## 2.0.2 / 2017-04-24
 
 * allow multi-word filters (fix #25)
