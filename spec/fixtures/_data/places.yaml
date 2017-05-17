@@ -1,0 +1,11 @@
+- title: "Tokyo"
+  url: "http://google.jp"
+  location:
+    latitude: 35.652832
+    longitude: 139.839478
+
+- title: "New York"
+  url: "http://google.com"
+  location:
+    latitude: 40.730610
+    longitude: -73.935242

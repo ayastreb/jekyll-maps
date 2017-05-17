@@ -39,8 +39,8 @@ describe Jekyll::Maps::LocationFinder do
     end
   end
 
-  context "looking for locations in data files with deep source" do
-    let(:options) { Jekyll::Maps::OptionsParser.parse("src='_data/france'") }
+  context "looking for locations in data files with deep source (France)" do
+    let(:options) { Jekyll::Maps::OptionsParser.parse("src='_data/france/places.yml'") }
     let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
     let(:actual)  { finder.find(site, page) }
 
@@ -52,6 +52,34 @@ describe Jekyll::Maps::LocationFinder do
       actual.each do |location|
         expect(location).not_to include(:title => "Madird")
       end
+    end
+  end
+
+  context "looking for locations in data files with deep source (Spain)" do
+    let(:options) { Jekyll::Maps::OptionsParser.parse("src='_data/spain'") }
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
+
+    it "finds location from Spain" do
+      expect(actual.find { |l| l[:title] == "Madrid" }).to be_a(Hash)
+    end
+
+    it "doesn't find location from France" do
+      actual.each do |location|
+        expect(location).not_to include(:title => "Paris")
+      end
+    end
+  end
+
+  context "looking for locations in specific data file" do
+    let(:options) { Jekyll::Maps::OptionsParser.parse("src='_data/places.yaml'") }
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
+
+    it "finds locations in all data files" do
+      expect(actual.length).to eq(2)
+      expect(actual.find { |l| l[:title] == "Tokyo" }).to be_a(Hash)
+      expect(actual.find { |l| l[:title] == "New York" }).to be_a(Hash)
     end
   end
 

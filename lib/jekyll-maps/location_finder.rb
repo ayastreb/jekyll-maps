@@ -3,7 +3,7 @@ module Jekyll
     class LocationFinder
       def initialize(options)
         @documents = []
-        @options   = options
+        @options = options
       end
 
       def find(site, page)
@@ -25,7 +25,11 @@ module Jekyll
         return site.data if path.empty?
 
         data = OpenStruct.new(site.data)
-        data[path]
+        if @options[:filters]["src"] =~ %r!\.ya?ml!
+          { :path => data[path.gsub(%r!\.ya?ml!, "")] }
+        else
+          data[path]
+        end
       end
 
       private
