@@ -1,3 +1,5 @@
-gem "jekyll-maps"
-gem "redcarpet"
-gem "pygments.rb"
+source 'https://rubygems.org'
+
+gem 'jekyll-maps'
+gem 'redcarpet'
+gem 'pygments.rb'
