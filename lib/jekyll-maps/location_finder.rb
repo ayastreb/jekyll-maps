@@ -7,7 +7,9 @@ module Jekyll
       end
 
       def find(site, page)
-        if @options[:filters].empty?
+        if @options[:attributes][:latitude] && @options[:attributes][:longitude]
+          return [location_from_options(page)]
+        elsif @options[:filters].empty?
           @documents << page if with_location?(page)
         else
           site.collections.each { |_, collection| filter(collection.docs) }
@@ -15,6 +17,17 @@ module Jekyll
         end
 
         documents_to_locations
+      end
+
+      private
+      def location_from_options(page)
+        {
+          :latitude  => @options[:attributes][:latitude],
+          :longitude => @options[:attributes][:longitude],
+          :title     => @options[:attributes][:marker_title] || page["title"],
+          :url       => @options[:attributes][:marker_url] || fetch_url(page),
+          :image     => @options[:attributes][:marker_img] || page["image"] || ""
+        }
       end
 
       private

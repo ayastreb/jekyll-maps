@@ -154,4 +154,31 @@ describe Jekyll::Maps::LocationFinder do
       expect(location[:url]).to eq("")
     end
   end
+
+  context "take location from inline attributes first" do
+    let(:options) do
+      attrs = %w(
+        latitude='42.2'
+        longitude='3.2'
+        marker_title='inline marker'
+        marker_img='/marker-img.jpg'
+        marker_url='/marker-url'
+      )
+      Jekyll::Maps::OptionsParser.parse(attrs.join(" "))
+    end
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
+
+    it "finds only location from attributes" do
+      expect(actual.empty?).to be_falsey
+      expect(actual.length).to eq(1)
+      location = actual.find { |l| l[:title] == "inline marker" }
+      expect(location).to be_a(Hash)
+      expect(location[:latitude]).to eq("42.2")
+      expect(location[:longitude]).to eq("3.2")
+      expect(location[:title]).to eq("inline marker")
+      expect(location[:image]).to eq("/marker-img.jpg")
+      expect(location[:url]).to eq("/marker-url")
+    end
+  end
 end

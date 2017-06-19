@@ -13,6 +13,11 @@ module Jekyll
         show_marker
         show_popup
         zoom
+        latitude
+        longitude
+        marker_title
+        marker_img
+        marker_url
       ).freeze
 
       class << self
