@@ -1,3 +1,8 @@
+## 2.0.4 / 2017-07-19
+
+* allow multiple locations per document (fix #6)
+* allow inline locations with map attributes, e.g. `{% google_map laititude='42.23323' longitude='3.213232' %}` (fix #23)
+
 ## 2.0.3 / 2017-05-17
 
 * load locations from specific data file (fix #26)
