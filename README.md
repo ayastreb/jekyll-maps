@@ -22,7 +22,7 @@ GoogleMaps Marker Clusterer can be used if you have many points within close pro
 2. Add the following to your site's `_config.yml`:
 
   ```yml
-  gems:
+  plugins:
     - jekyll-maps
   ```
 
@@ -48,6 +48,21 @@ First, add location information to your posts YAML front-matter:
   location:
     latitude: 51.5285582
     longitude: -0.2416807
+  ```
+
+You can specify multiple locations per post:
+
+  ```yml
+  location:
+    - latitude: 51.5285582
+      longitude: -0.2416807
+    - latitude: 52.5285582
+      longitude: -2.2416807
+    - title: custom marker title
+      image: custom marker image
+      url: custom marker url
+      latitude: 51.5285582
+      longitude: -0.2416807
   ```
 
 Alternatively, you can add location info to your custom collection's documents or even in data files:
@@ -97,6 +112,13 @@ You can configure map's dimensions and assign custom CSS class to the element:
   ```
   {% google_map width="100%" height="400" class="my-map" %}
   ```
+
+You can also just set marker coordinates directly in tag attributes:
+  ```
+  {% google_map latitude="48.8587741" longitude="2.2074741" marker_title="My Location" marker_img="/img.jpg" marker_url="/my-location.html" %}
+  ```
+This will create a map with single marker in given location. `marker_title`, `marker_img` 
+and `marker_url` attributes are optional and current page's data will be used by default.
   
 ### Filters
 
