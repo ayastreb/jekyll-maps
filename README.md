@@ -1,7 +1,8 @@
-# Jekyll Maps
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/GNA5BNmoDRUjxvuDQsxXY3kW/ayastreb/jekyll-maps'>
   <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/GNA5BNmoDRUjxvuDQsxXY3kW/ayastreb/jekyll-maps.svg' />
 </a>
+
+# Jekyll Maps
 
 [![Gem Version](https://badge.fury.io/rb/jekyll-maps.svg)](https://badge.fury.io/rb/jekyll-maps)
 [![Build Status](https://travis-ci.org/ayastreb/jekyll-maps.svg?branch=master)](https://travis-ci.org/ayastreb/jekyll-maps)
