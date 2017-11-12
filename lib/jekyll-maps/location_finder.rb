@@ -12,8 +12,8 @@ module Jekyll
         elsif @options[:filters].empty?
           @documents << page if with_location?(page)
         else
-          site.collections.each { |_, collection| filter(collection.docs) }
-          site_data(site).each { |_, items| traverse(items) }
+          site.collections.each_value { |collection| filter(collection.docs) }
+          site_data(site).each_value { |items| traverse(items) }
         end
 
         documents_to_locations
@@ -55,7 +55,7 @@ module Jekyll
       def traverse(items)
         return filter(items) if items.is_a?(Array)
 
-        items.each { |_, children| traverse(children) } if items.is_a?(Hash)
+        items.each_value { |children| traverse(children) } if items.is_a?(Hash)
       end
 
       private
