@@ -1,4 +1,7 @@
 # Jekyll Maps
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/GNA5BNmoDRUjxvuDQsxXY3kW/ayastreb/jekyll-maps'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/GNA5BNmoDRUjxvuDQsxXY3kW/ayastreb/jekyll-maps.svg' />
+</a>
 
 [![Gem Version](https://badge.fury.io/rb/jekyll-maps.svg)](https://badge.fury.io/rb/jekyll-maps)
 [![Build Status](https://travis-ci.org/ayastreb/jekyll-maps.svg?branch=master)](https://travis-ci.org/ayastreb/jekyll-maps)
@@ -73,34 +76,34 @@ Alternatively, you can add location info to your custom collection's documents o
     location:
       latitude: 48.8587741
       longitude: 2.2074741
-  
+
   - title: Madrid
     url: http://google.es
     location:
       latitude: 40.4378698
       longitude: -3.8196204
   ```
-  
+
 By default this plugin will display location from the page it's placed on:
 
   ```
   {% google_map %}
   ```
-  
+
 But you can use src attribute to load locations from other places, like posts, collections or data files!
 
 For example, this map will show locations from all posts from 2016:
-  
+
   ```
   {% google_map src="_posts/2016" %}
   ```
-  
+
 This map will show locations from a collection called 'my_collection':
 
   ```
   {% google_map src="_collections/my_collection" %}
   ```
-  
+
 This map will show locations from all data files located in 'my_points' sub-folder:
 
   ```
@@ -117,9 +120,9 @@ You can also just set marker coordinates directly in tag attributes:
   ```
   {% google_map latitude="48.8587741" longitude="2.2074741" marker_title="My Location" marker_img="/img.jpg" marker_url="/my-location.html" %}
   ```
-This will create a map with single marker in given location. `marker_title`, `marker_img` 
+This will create a map with single marker in given location. `marker_title`, `marker_img`
 and `marker_url` attributes are optional and current page's data will be used by default.
-  
+
 ### Filters
 
 You can also filter which locations to display on the map!<br/>
