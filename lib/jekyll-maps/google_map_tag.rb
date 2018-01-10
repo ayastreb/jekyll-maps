@@ -21,7 +21,7 @@ module Jekyll
   #{JS_LIB_NAME}.register(
     '#{@args[:attributes][:id]}',
     #{locations.to_json},
-    #{map_options(context.registers[:site].config).to_json}
+    #{map_options(context.registers[:site]).to_json}
   );
 </script>
 HTML
@@ -53,9 +53,9 @@ HTML
       end
 
       private
-      def map_options(config)
+      def map_options(site)
         opts = {
-          :baseUrl         => config.fetch("base_url", "/"),
+          :baseUrl         => site.baseurl || "/",
           :useCluster      => !@args[:flags][:no_cluster],
           :showMarker      => @args[:attributes][:show_marker] != "false",
           :showMarkerPopup => @args[:attributes][:show_popup] != "false"
