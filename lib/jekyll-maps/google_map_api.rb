@@ -1,7 +1,7 @@
 module Jekyll
   module Maps
     class GoogleMapApi
-      HEAD_END_TAG = %r!</.*head>!
+      HEAD_END_TAG = %r!</[\s\t]*head>!
 
       class << self
         def prepend_api_code(doc)
