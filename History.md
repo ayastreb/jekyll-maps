@@ -1,3 +1,11 @@
+## 2.1.1 / 2018-01-25
+
+* fixed JS lib injection in header (fix #31)
+
+## 2.1.0 / 2018-01-10
+
+* fixed base_url in marker url (fix #28)
+
 ## 2.0.4 / 2017-07-19
 
 * allow multiple locations per document (fix #6)
@@ -23,6 +31,7 @@
 * change attributes syntax to HTML-style
 
 ## 1.1.6 / 2016-09-07
+
 * fix #15 - broken page if there is <header> tag used
 * allow setting custom zoom level with `zoom:10` attribute
 
@@ -44,7 +53,7 @@
 
 ## 1.1.1 / 2016-07-20
 
-* configure GoogleMaps API key from _config.yml
+* configure GoogleMaps API key from \_config.yml
 
 ## 1.1.0 / 2016-07-19
 
