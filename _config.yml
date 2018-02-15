@@ -32,7 +32,7 @@ maps:
   google:
     api_key:      'AIzaSyDiswWoiEpfb14st7-VcFPtzLimC5Bhr4k'
 
-gems:
+plugins:
   - jekyll-maps
   - redcarpet
   - pygments.rb
