@@ -103,7 +103,7 @@ var jekyllMaps = (function() {
       var markers = item.locations.map(createMarker)
 
       map.fitBounds(bounds)
-      google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+      google.maps.event.addListenerOnce(map, 'idle', function() {
         if (this.customZoom) this.setZoom(this.customZoom)
       })
       if (mapOptions.useCluster) {
@@ -272,11 +272,11 @@ if (typeof Object.assign !== 'function') {
 <p>Marker on-click popup is disabled with <code>show_popup</code> attribute.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map show_popup=&quot;false&quot; zoom=&quot;10&quot; %}
 </code></pre></div>
-<div id='3de5e52e-4416-46da-a1b5-ad1986c4de71' style='width:100%;height:400px;'></div>
+<div id='8a00c9f9-07d9-4280-a5ba-28b7ef297edc' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
   jekyllMaps.register(
-    '3de5e52e-4416-46da-a1b5-ad1986c4de71',
+    '8a00c9f9-07d9-4280-a5ba-28b7ef297edc',
     [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
     {"baseUrl":"/jekyll-maps/","useCluster":true,"showMarker":true,"showMarkerPopup":false,"customZoom":10}
   );
@@ -287,11 +287,11 @@ if (typeof Object.assign !== 'function') {
 <p>If you just want to display area map without any markers on it, use <code>show_marker</code> attribute.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  {% google_map show_marker=&quot;false&quot; zoom=&quot;10&quot; %}
 </code></pre></div>
-<div id='304f6396-f022-41b2-8840-f1fd6495f3eb' style='width:100%;height:400px;'></div>
+<div id='f053c518-5a6f-4eef-b958-15207a2cfa6b' style='width:100%;height:400px;'></div>
 
 <script type='text/javascript'>
   jekyllMaps.register(
-    '304f6396-f022-41b2-8840-f1fd6495f3eb',
+    'f053c518-5a6f-4eef-b958-15207a2cfa6b',
     [{"latitude":51.5073896,"longitude":-0.1276717,"title":"Examples","url":"/2016/01/04/examples/","image":""}],
     {"baseUrl":"/jekyll-maps/","useCluster":true,"showMarker":false,"showMarkerPopup":true,"customZoom":10}
   );
