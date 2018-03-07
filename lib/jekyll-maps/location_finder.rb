@@ -25,6 +25,7 @@ module Jekyll
           :latitude  => @options[:attributes][:latitude],
           :longitude => @options[:attributes][:longitude],
           :title     => @options[:attributes][:marker_title] || page["title"],
+          :icon      => @options[:attributes][:marker_icon] || page["marker_icon"],
           :url       => @options[:attributes][:marker_url] || fetch_url(page),
           :image     => @options[:attributes][:marker_img] || page["image"] || ""
         }
@@ -103,6 +104,7 @@ module Jekyll
           :latitude  => location["latitude"],
           :longitude => location["longitude"],
           :title     => location["title"] || document["title"],
+          :icon      => location["marker_icon"] || document["marker_icon"],
           :url       => location["url"] || fetch_url(document),
           :image     => location["image"] || document["image"] || ""
         }

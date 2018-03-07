@@ -58,7 +58,8 @@ HTML
           :baseUrl         => site.baseurl || "/",
           :useCluster      => !@args[:flags][:no_cluster],
           :showMarker      => @args[:attributes][:show_marker] != "false",
-          :showMarkerPopup => @args[:attributes][:show_popup] != "false"
+          :showMarkerPopup => @args[:attributes][:show_popup] != "false",
+          :markerIcon      => @args[:attributes][:marker_icon]
         }
         if @args[:attributes][:zoom]
           opts[:customZoom] = @args[:attributes][:zoom].to_i

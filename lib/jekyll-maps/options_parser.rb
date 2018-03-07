@@ -16,6 +16,7 @@ module Jekyll
         latitude
         longitude
         marker_title
+        marker_icon
         marker_img
         marker_url
       ).freeze
