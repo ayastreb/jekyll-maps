@@ -1,0 +1,12 @@
+- title: "New York Streets 1"
+  data_set: "02"
+  location:
+    latitude: 40.755965
+    longitude: -73.994175
+    marker_icon: https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png
+
+- title: "New York Streets 2"
+  data_set: "02"
+  location:
+    latitude: 40.747296
+    longitude: -73.9762767
