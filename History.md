@@ -1,3 +1,8 @@
+## 2.2.0 / 2018-03-07
+
+* implement custom marker icon (#30)
+* fix external URL in marker
+
 ## 2.1.1 / 2018-01-25
 
 * fixed JS lib injection in header (fix #31)
