@@ -13,6 +13,7 @@ location:
     longitude: 2.1890757 
     image: /next-img.jpg
     url: /next-post
+    url_text: "Next Post"
 ---
 
 Barcelona is in Spain.

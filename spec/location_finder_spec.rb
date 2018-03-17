@@ -26,19 +26,20 @@ describe Jekyll::Maps::LocationFinder do
       # there should be 3 locations in post: fixtures/_posts/2017-06-19-multi-locations.md
       barcelona_main = actual.find { |l| l[:title] == "Barcelona" }
       expect(barcelona_main).to be_a(Hash)
-      expect(barcelona_main[:url]).to eq("/2017/06/19/multi-locations.html")
+      expect(barcelona_main[:url]).to eq("")
       expect(barcelona_main[:latitude]).to eq(41.3948976)
       expect(barcelona_main[:longitude]).to eq(2.0787279)
       expect(barcelona_main[:image]).to eq("/main-img.jpg")
 
       barcelona_sagrada = actual.find { |l| l[:title] == "sagrada familia" }
-      expect(barcelona_sagrada[:url]).to eq("/2017/06/19/multi-locations.html")
+      expect(barcelona_sagrada[:url]).to eq("")
       expect(barcelona_sagrada[:latitude]).to eq(41.4032671)
       expect(barcelona_sagrada[:longitude]).to eq(2.1739832)
       expect(barcelona_sagrada[:image]).to eq("/main-img.jpg")
 
       barcelona_url = actual.find { |l| l[:title] == "location with url" }
       expect(barcelona_url[:url]).to eq("/next-post")
+      expect(barcelona_url[:url_text]).to eq("Next Post")
       expect(barcelona_url[:latitude]).to eq(41.3864518)
       expect(barcelona_url[:longitude]).to eq(2.1890757)
       expect(barcelona_url[:image]).to eq("/next-img.jpg")
