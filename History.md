@@ -1,3 +1,8 @@
+## 2.3.0 / 2018-03-17
+
+* customize popup link text (#34)
+* do not use page url for multiple on page locations (#33)
+
 ## 2.2.0 / 2018-03-07
 
 * implement custom marker icon (#30)
