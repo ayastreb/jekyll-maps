@@ -89,7 +89,9 @@ module Jekyll
         @documents.each do |document|
           if document["location"].is_a?(Array)
             document["location"].each do |location|
-              locations.push(convert(document, location))
+              point = convert(document, location)
+              point[:url] = "" if point[:url] == fetch_url(document)
+              locations.push(point)
             end
           else
             locations.push(convert(document, document["location"]))
@@ -106,6 +108,7 @@ module Jekyll
           :title     => location["title"] || document["title"],
           :icon      => location["marker_icon"] || document["marker_icon"],
           :url       => location["url"] || fetch_url(document),
+          :url_text  => location["url_text"],
           :image     => location["image"] || document["image"] || ""
         }
       end
