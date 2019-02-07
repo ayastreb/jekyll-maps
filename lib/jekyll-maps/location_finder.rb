@@ -111,7 +111,8 @@ module Jekyll
           :url        => location["url"] || fetch_url(document),
           :url_text   => location["url_text"],
           :image      => location["image"] || document["image"] || "",
-          :popup_html => location["marker_popup_html"] || document["marker_popup_html"] || ""
+          :popup_html => location["marker_popup_html"] \
+                         || document["marker_popup_html"] || ""
         }
       end
 
