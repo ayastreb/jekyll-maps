@@ -1,0 +1,17 @@
+- title: Apache Point Observatory
+  state: NM
+  location:
+    latitude: 32.780341
+    longitude: -105.819661
+
+- title: Naylor Observatory
+  state: PA
+  location:
+    latitude: 40.149433
+    longitude: -76.895617
+
+- title: Adams Observatory
+  state: IA
+  location:
+    latitude: 42.092937
+    longitude: -93.569096

@@ -1,0 +1,23 @@
+- title: Boston
+  state: MA
+  location:
+    latitude: 42.358935
+    longitude: -71.056772
+
+- title: New York
+  state: NY
+  location:
+    latitude: 40.710399 
+    longitude: -74.001612
+
+- title: Philadelphia
+  state: PA
+  location:
+    latitude: 39.949775 
+    longitude: -75.164116
+
+- title: Pittsburgh
+  state: PA
+  location:
+    latitude: 40.440482 
+    longitude: -79.996974
