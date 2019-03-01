@@ -7,3 +7,4 @@ coverage
 _site
 node_modules
 .DS_store
+.#*
