@@ -117,7 +117,7 @@ describe Jekyll::Maps::LocationFinder do
     end
   end
 
-  context "filtering locations" do
+  context "filtering posts by location" do
     let(:options) { Jekyll::Maps::OptionsParser.parse("src='_posts' country='de'") }
     let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
     let(:actual)  { finder.find(site, page) }
@@ -128,6 +128,14 @@ describe Jekyll::Maps::LocationFinder do
         expect(location).to include(:title => "Berlin")
       end
     end
+  end
+
+  context "filtering data by location (state filter first)" do
+    search_data_for_pa_places("state='PA' src='_data'")
+  end
+
+  context "filtering data by location (src filter first)" do
+    search_data_for_pa_places("src='_data' state='PA'")
   end
 
   context "by default look for locations on current page" do

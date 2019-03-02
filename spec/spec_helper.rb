@@ -53,4 +53,40 @@ RSpec.configure do |config|
       { :site => site, :page => page }.merge(registers)
     )
   end
+
+  def finds_all_pa_locations(_options, _finder, actual)
+    expect(actual.empty?).to be_falsey
+    pa_places = ["Pittsburgh", "Philadelphia", "Naylor Observatory"]
+    pa_places.each do |title|
+      expect(actual.find { |l| l[:title] == title }).to be_a(Hash)
+    end
+  end
+
+  def ignores_non_pa_locations(_options, _finder, actual)
+    non_pa_places = [
+      "Boston",
+      "New York",
+      "Apache Point Observatory",
+      "Adams Observatory",
+      "Paris",
+      "Madrid",
+      "Not a place"
+    ]
+    non_pa_places.each do |title|
+      expect(actual.find { |l| l[:title] == title }).to be_nil
+    end
+  end
+
+  def search_data_for_pa_places(query)
+    let(:options) { Jekyll::Maps::OptionsParser.parse(query) }
+    let(:finder)  { Jekyll::Maps::LocationFinder.new(options) }
+    let(:actual)  { finder.find(site, page) }
+
+    it "ignores non-PA locations" do
+      finds_all_pa_locations(options, finder, actual)
+    end
+    it "finds all PA locations" do
+      ignores_non_pa_locations(options, finder, actual)
+    end
+  end
 end
