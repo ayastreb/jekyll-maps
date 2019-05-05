@@ -43,6 +43,18 @@ maps:
     api_key: <YOUR_KEY>
 ```
 
+### Configure Mapbox API Key
+
+To be able to use Mapbox you need to obtain an [Access Token](https://docs.mapbox.com/help/glossary/access-token/).
+
+Once you have your Access Token you need to add it to Jekyll's `_config.yml`:
+
+```yml
+maps:
+  mapbox:
+    access_token: <YOUR_TOKEN>
+```
+
 ### Data Source
 
 First, add location information to your posts YAML front-matter:

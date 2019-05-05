@@ -1,3 +1,7 @@
+## master
+
+* feature: add tag `mapbox` to display maps with Mapbox GL JS (<https://www.mapbox.com/>)
+
 ## 2.3.0 / 2018-03-17
 
 * customize popup link text (#34)
