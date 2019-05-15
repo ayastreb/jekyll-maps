@@ -21,7 +21,6 @@ module Jekyll
   #{js_lib_contents}
 </script>
 #{load_mapbox_api}
-#{load_marker_cluster}
 HTML
         end
 
@@ -44,18 +43,6 @@ HTML
     cursor: pointer;
   }
 </style>
-HTML
-        end
-
-        private
-        def load_marker_cluster
-          settings = @config.fetch("maps", {})
-            .fetch("google", {})
-            .fetch("marker_cluster", {})
-          return unless settings.fetch("enabled", true)
-          <<HTML
-<!-- <script async defer src='https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js'
-        onload='#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeCluster(#{settings.to_json})'></script> //-->
 HTML
         end
 
