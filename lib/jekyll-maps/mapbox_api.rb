@@ -42,6 +42,13 @@ HTML
     border-radius: 50%;
     cursor: pointer;
   }
+
+  .mapboxgl-popup {
+    max-width: 400px;
+  }
+  .mapboxgl-popup-content {
+    padding: 20px 10px 15px 10px;
+  }
 </style>
 HTML
         end
