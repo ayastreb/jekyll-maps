@@ -34,15 +34,6 @@ HTML
 <script async defer src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js' onload='#{Jekyll::Maps::MapboxTag::JS_LIB_NAME}.initializeMap("#{access_token}")'></script>
 <link async defer href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
 <style>
-  .marker {
-    background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
   .mapboxgl-popup {
     max-width: 400px;
   }
