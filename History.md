@@ -1,3 +1,6 @@
+## 2.4.0
+* support jekyll v4
+
 ## 2.3.0 / 2018-03-17
 
 * customize popup link text (#34)
