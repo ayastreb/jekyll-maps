@@ -1,3 +1,12 @@
+## 2.3.2 / 2020-01-04
+
+* Add support for Jekyll 4.x (#41)
+
+## 2.3.1 / 2019-03-02
+
+* Fix filter checking logic (#38)
+* Allow custom HTML in marker popups (#37)
+
 ## 2.3.0 / 2018-03-17
 
 * customize popup link text (#34)
