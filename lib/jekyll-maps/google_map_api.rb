@@ -49,24 +49,48 @@ HTML
             .fetch("api_key", "")
           <<HTML
           <script async defer>
+            
+
             // Load maps only when DOM is loaded
             document.addEventListener("DOMContentLoaded", function() {
                 // Maps script already loaded
-                if (window.google && google.maps && jekyllMaps) {
+                if (window.google && window.google.maps && jekyllMaps) {
                   jekyllMaps.initializeMap();
                 } else {
-                    lazyLoadGoogleMap();
+                    enableMapsObserver();
                 }
             });
             
+            function enableMapsObserver() {
+              console.log('Enable Maps Observer');
+              // Enable Observer on all Maps
+              var maps = document.getElementsByClassName('jekyll-map');
+
+              const observer = new IntersectionObserver(function(entries, observer) {
+                // Test if one of the maps is in the viewport
+                var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
+                if (isIntersecting) {
+                  lazyLoadGoogleMap();
+                  observer.disconnect();
+                }
+
+              });
+              for(var i = 0; i < maps.length; i++) {
+                observer.observe(maps[i]);  
+              }
+            }
+
             function lazyLoadGoogleMap() {
-                var fjs = document.getElementsByTagName('script')[0];
-                var js = document.createElement('script');
-                js.id = 'gmap-api';
-                js.setAttribute('async', '');
-                js.setAttribute('defer', '');
-                js.src = "//maps.google.com/maps/api/js?sensor=false&key=#{api_key}&callback=#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeMap";
-                fjs.parentNode.insertBefore(js, fjs);
+                // If google maps api script not already loaded
+                if(!window.google || !window.google.maps) {
+                  var fjs = document.getElementsByTagName('script')[0];
+                  var js = document.createElement('script');
+                  js.id = 'gmap-api';
+                  js.setAttribute('async', '');
+                  js.setAttribute('defer', '');
+                  js.src = "//maps.google.com/maps/api/js?sensor=false&key=#{api_key}&callback=#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeMap";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }
             }
           </script>
 HTML
