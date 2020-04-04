@@ -52,6 +52,12 @@ HTML
         %(class='#{css}')
       end
 
+      private 
+      def render_styles(site)
+        style_name = @args[:attributes][:styles] || "default"
+        styles = site.data['maps_styles'][style_name] || "[]"
+      end
+
       private
       def map_options(site)
         opts = {
@@ -59,7 +65,8 @@ HTML
           :useCluster      => !@args[:flags][:no_cluster],
           :showMarker      => @args[:attributes][:show_marker] != "false",
           :showMarkerPopup => @args[:attributes][:show_popup] != "false",
-          :markerIcon      => @args[:attributes][:marker_icon]
+          :markerIcon      => @args[:attributes][:marker_icon],
+          :styles          => render_styles(site)
         }
         if @args[:attributes][:zoom]
           opts[:customZoom] = @args[:attributes][:zoom].to_i
