@@ -62,7 +62,6 @@ HTML
             });
             
             function enableMapsObserver() {
-              console.log('Enable Maps Observer');
               // Enable Observer on all Maps
               var maps = document.getElementsByClassName('jekyll-map');
 
