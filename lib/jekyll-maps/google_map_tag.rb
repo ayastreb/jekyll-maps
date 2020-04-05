@@ -52,10 +52,11 @@ HTML
         %(class='#{css}')
       end
 
-      private 
+      private
       def render_styles(site)
         style_name = @args[:attributes][:styles] || "default"
-        styles = site.data['maps_styles'][style_name] || "[]"
+        maps_styles = site.data["maps_styles"] || {}
+        maps_styles[style_name] || "[]"
       end
 
       private

@@ -93,5 +93,18 @@ describe Jekyll::Maps::GoogleMapTag do
         expect(output).to match(expected)
       end
     end
+
+    context "render with custom styles" do
+      let(:options) { "styles='fixture_style'" }
+      let(:output) do
+        Liquid::Template.parse("{% #{tag} #{options} %}").render!(context, {})
+      end
+
+      it "renders dimensions with default values" do
+        # styles content is loaded from fixtures/_data/maps_styles/fixture_style.json
+        expected = '"styles":[{"elementType":"geometry","stylers":[{"color":"#1d2c4d"}]}]'
+        expect(output).to include(expected)
+      end
+    end
   end
 end

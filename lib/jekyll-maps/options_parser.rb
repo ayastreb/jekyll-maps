@@ -19,7 +19,7 @@ module Jekyll
         marker_icon
         marker_img
         marker_url
-        marker_popup_html,
+        marker_popup_html
         styles
       ).freeze
 
