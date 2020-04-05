@@ -7,5 +7,4 @@ rvm:
 script: script/cibuild
 after_success:
   - bundle exec codeclimate-test-reporter
-sudo: false
 cache: bundler
