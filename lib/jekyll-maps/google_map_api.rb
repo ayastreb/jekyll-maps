@@ -53,11 +53,17 @@ HTML
 
             // Load maps only when DOM is loaded
             document.addEventListener("DOMContentLoaded", function() {
-                // Maps script already loaded
                 if (window.google && window.google.maps && jekyllMaps) {
+                  // Maps script already loaded -> Execute callback method
                   jekyllMaps.initializeMap();
+                } else if (!('IntersectionObserver' in window) || 
+                !('IntersectionObserverEntry' in window) ||
+                !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+                  // Intersection Observer -> Backup solution : load maps now
+                  lazyLoadGoogleMap();
                 } else {
-                    enableMapsObserver();
+                  // Google Maps not loaded & Intersection Observer working -> Enable it
+                  enableMapsObserver();
                 }
             });
             
@@ -67,7 +73,7 @@ HTML
 
               const observer = new IntersectionObserver(function(entries, observer) {
                 // Test if one of the maps is in the viewport
-                var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
+                var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0;
                 if (isIntersecting) {
                   lazyLoadGoogleMap();
                   observer.disconnect();
