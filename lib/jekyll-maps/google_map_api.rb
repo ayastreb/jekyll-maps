@@ -93,7 +93,7 @@ HTML
                   js.id = 'gmap-api';
                   js.setAttribute('async', '');
                   js.setAttribute('defer', '');
-                  js.src = "//maps.google.com/maps/api/js?sensor=false&key=#{api_key}&callback=#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeMap";
+                  js.src = "//maps.google.com/maps/api/js?key=#{api_key}&callback=#{Jekyll::Maps::GoogleMapTag::JS_LIB_NAME}.initializeMap";
                   fjs.parentNode.insertBefore(js, fjs);
                 }
             }
