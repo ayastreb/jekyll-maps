@@ -17,7 +17,7 @@ describe Jekyll::Maps::GoogleMapTag do
     end
 
     it "registers Google Maps for lazy loading" do
-      expect(content.scan(%r!js.src = "//maps.google.com/maps/!).length).to eq(1)
+      expect(content).to match(%r!js.src = "//maps.google.com/maps/!)
     end
 
     it "renders API key" do
@@ -25,7 +25,7 @@ describe Jekyll::Maps::GoogleMapTag do
     end
 
     it "provides fallback method when IntersectionObserver is not implemented/supported (older browsers)" do
-      expect(content.scan(%r!!('IntersectionObserver' in window)!).length).to eq(1)
+      expect(content).to match(%r!('IntersectionObserver' in window)!)
     end
   end
 
