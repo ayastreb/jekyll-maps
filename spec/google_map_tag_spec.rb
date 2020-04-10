@@ -12,12 +12,20 @@ describe Jekyll::Maps::GoogleMapTag do
       expect(content).to match(%r!(London|Paris)!)
     end
 
-    it "includes external js only once" do
-      expect(content.scan(%r!maps\.googleapis\.com!).length).to eq(1)
+    it "does not include external js directly (should be lazy loaded)" do
+      expect(content.scan(%r!maps\.googleapis\.com!).length).to eq(0)
+    end
+
+    it "registers Google Maps for lazy loading" do
+      expect(content.scan(%r!js.src = "//maps.google.com/maps/!).length).to eq(1)
     end
 
     it "renders API key" do
       expect(content).to match(%r!maps/api/js\?key=GOOGLE_MAPS_API_KEY!)
+    end
+
+    it "provides fallback method when IntersectionObserver is not implemented/supported (older browsers)" do
+      expect(content.scan(%r!\!('IntersectionObserver' in window)!).length).to eq(1)
     end
   end
 
@@ -70,7 +78,7 @@ describe Jekyll::Maps::GoogleMapTag do
       end
 
       it "renders attributes" do
-        expected = %r!div id='foo' style='width:100px;height:50%;' class='baz bar'!
+        expected = %r!div id='foo' style='width:100px;height:50%;' class='baz bar jekyll-map'!
         expect(output).to match(expected)
       end
 
