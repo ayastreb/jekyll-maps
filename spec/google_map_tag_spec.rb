@@ -25,7 +25,7 @@ describe Jekyll::Maps::GoogleMapTag do
     end
 
     it "provides fallback method when IntersectionObserver is not implemented/supported (older browsers)" do
-      expect(content.scan(%r!\!('IntersectionObserver' in window)!).length).to eq(1)
+      expect(content.scan(%r!!('IntersectionObserver' in window)!).length).to eq(1)
     end
   end
 
