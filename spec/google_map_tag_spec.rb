@@ -24,7 +24,8 @@ describe Jekyll::Maps::GoogleMapTag do
       expect(content).to match(%r!maps/api/js\?key=GOOGLE_MAPS_API_KEY!)
     end
 
-    it "provides fallback method when IntersectionObserver is not implemented/supported (older browsers)" do
+    it "provides fallback method when IntersectionObserver is 
+          not implemented/supported (older browsers)" do
       expect(content).to match(%r!('IntersectionObserver' in window)!)
     end
   end
@@ -78,7 +79,8 @@ describe Jekyll::Maps::GoogleMapTag do
       end
 
       it "renders attributes" do
-        expected = %r!div id='foo' style='width:100px;height:50%;' class='baz bar jekyll-map'!
+        expected = %r!div id='foo' style='width:100px;height:50%;' 
+                        class='baz bar jekyll-map'!
         expect(output).to match(expected)
       end
 

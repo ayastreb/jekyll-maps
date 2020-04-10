@@ -49,14 +49,14 @@ HTML
             .fetch("api_key", "")
           <<HTML
           <script async defer>
-            
+
 
             // Load maps only when DOM is loaded
             document.addEventListener("DOMContentLoaded", function() {
                 if (window.google && window.google.maps && jekyllMaps) {
                   // Maps script already loaded -> Execute callback method
                   jekyllMaps.initializeMap();
-                } else if (!('IntersectionObserver' in window) || 
+                } else if (!('IntersectionObserver' in window) ||
                 !('IntersectionObserverEntry' in window) ||
                 !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
                   // Intersection Observer -> Backup solution : load maps now
@@ -66,7 +66,7 @@ HTML
                   enableMapsObserver();
                 }
             });
-            
+
             function enableMapsObserver() {
               // Enable Observer on all Maps
               var maps = document.getElementsByClassName('jekyll-map');
@@ -78,10 +78,10 @@ HTML
                   lazyLoadGoogleMap();
                   observer.disconnect();
                 }
-
               });
+
               for(var i = 0; i < maps.length; i++) {
-                observer.observe(maps[i]);  
+                observer.observe(maps[i]);
               }
             }
 
