@@ -79,9 +79,8 @@ describe Jekyll::Maps::GoogleMapTag do
       end
 
       it "renders attributes" do
-        expected = %r!div id='foo' style='width:100px;height:50%;'
-                        class='baz bar jekyll-map'!
-        expect(output).to match(expected)
+        expect(output).to match("div id='foo' style='width:100px;height:50%;'")
+        expect(output).to match("class='baz bar jekyll-map'")
       end
 
       it "renders custom zoom setting" do

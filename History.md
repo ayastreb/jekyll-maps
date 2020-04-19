@@ -1,3 +1,7 @@
+## 2.4.0 / 2020-04-19
+
+* Lazy load Google Maps script (#36)
+
 ## 2.3.2 / 2020-01-04
 
 * Add support for Jekyll 4.x (#41)
