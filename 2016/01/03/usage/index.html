@@ -111,77 +111,113 @@
       <div class="post">
   <h1 class="post-title">Usage</h1>
   <span class="post-date">03 Jan 2016</span>
-  <h3>Configure Google API Key</h3>
+  <h3 id="configure-google-api-key">Configure Google API Key</h3>
 
 <p>To be able to use Google Maps you need to obtain <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">API Key</a>.</p>
 
-<p>Once you have your API Key you need to add it to Jekyll&#39;s <code>_config.yml</code>:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="l l-Scalar l-Scalar-Plain">maps</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">google</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">api_key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;YOUR_KEY&gt;</span>
-</code></pre></div>
-<h3>Data Source</h3>
+<p>Once you have your API Key you need to add it to Jekyll’s <code>_config.yml</code>:</p>
+
+<pre><code class="language-yaml">  maps:
+    google:
+      api_key: &lt;YOUR_KEY&gt;
+</code></pre>
+
+<h3 id="data-source">Data Source</h3>
 
 <p>First, add location information to your posts YAML front-matter:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="c1"># _posts/2016-01-01-post.md</span>
-  <span class="l l-Scalar l-Scalar-Plain">location</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">latitude</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">51.5285582</span>
-    <span class="l l-Scalar l-Scalar-Plain">longitude</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">-0.2416807</span>
-</code></pre></div>
-<p>Alternatively, you can add location info to your custom collection&#39;s documents or even in data files:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="c1"># _data/places.yaml</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Paris&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="s">&quot;http://google.fr&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">location</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">latitude</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">48.8587741</span>
-      <span class="l l-Scalar l-Scalar-Plain">longitude</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2.2074741</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Madrid&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="s">&quot;http://google.es&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">location</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">latitude</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">40.4378698</span>
-      <span class="l l-Scalar l-Scalar-Plain">longitude</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">-3.8196204</span>
-</code></pre></div>
+<pre><code class="language-yaml">  # _posts/2016-01-01-post.md
+  location:
+    latitude: 51.5285582
+    longitude: -0.2416807
+</code></pre>
+
+<p>Alternatively, you can add location info to your custom collection’s documents or even in data files:</p>
+
+<pre><code class="language-yaml">  # _data/places.yaml
+  - title: "Paris"
+    url: "http://google.fr"
+    location:
+      latitude: 48.8587741
+      longitude: 2.2074741
+  
+  - title: "Madrid"
+    url: "http://google.es"
+    location:
+      latitude: 40.4378698
+      longitude: -3.8196204
+</code></pre>
+
 <p>If your post has an <code>image</code> in its front-matter data, this image will be used as a content for the popup when marker is clicked.
-Otherwise simple &quot;View&quot; text link will be placed in the popup.</p>
+Otherwise simple “View” text link will be placed in the popup.</p>
 
-<p>By default this plugin will display location from the page it&#39;s placed on:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map %}
-</code></pre></div>
+<p>By default this plugin will display location from the page it’s placed on:</p>
+
+<pre><code>  
+  {% google_map %}
+  
+</code></pre>
+
 <p>But you can use <code>src</code> attribute to load locations from other places, like posts, collections or data files!</p>
 
 <p>For example, this map will show locations from all posts from 2016:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map src=&quot;_posts/2016&quot; %}
-</code></pre></div>
-<p>This map will show locations from a collection called &#39;my_collection&#39;:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map src=&quot;_collections/my_collection&quot; %}
-</code></pre></div>
-<p>This map will show locations from all data files located in &#39;my_points&#39; sub-folder:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map src=&quot;_data/my_points&quot; %}
-</code></pre></div>
-<p>You can configure map&#39;s dimensions and assign custom CSS class to the element:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map width=&quot;100%&quot; height=&quot;400&quot; class=&quot;my-map&quot; %}
-</code></pre></div>
-<h3>Filters</h3>
 
-<p>You can also filter which locations to display on the map!<br/>
+<pre><code>  
+  {% google_map src="_posts/2016" %}
+  
+</code></pre>
+
+<p>This map will show locations from a collection called ‘my_collection’:</p>
+
+<pre><code>  
+  {% google_map src="_collections/my_collection" %}
+  
+</code></pre>
+
+<p>This map will show locations from all data files located in ‘my_points’ sub-folder:</p>
+
+<pre><code>  
+  {% google_map src="_data/my_points" %}
+  
+</code></pre>
+
+<p>You can configure map’s dimensions and assign custom CSS class to the element:</p>
+
+<pre><code>  
+  {% google_map width="100%" height="400" class="my-map" %}
+  
+</code></pre>
+
+<h3 id="filters">Filters</h3>
+
+<p>You can also filter which locations to display on the map!<br />
 For instance, following tag will only display locations from posts which have <code>lang: en</code> in their front-matter data.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map src=&quot;_posts&quot; lang=&quot;en&quot; %}
-</code></pre></div>
-<h3>Marker Cluster</h3>
+
+<pre><code>  
+  {% google_map src="_posts" lang="en" %}
+  
+</code></pre>
+
+<h3 id="marker-cluster">Marker Cluster</h3>
 
 <p>By default <a href="https://github.com/googlemaps/js-marker-clusterer">Marker Clusterer</a> is enabled.
 If you have many markers on the map, it will group them and show icon with the count of markers in each cluster - <a href="https://googlemaps.github.io/js-marker-clusterer/examples/advanced_example.html">see example</a>.</p>
 
-<p>If you don&#39;t want to use marker cluster, you can disable it globally in <code>_config.yml</code>:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="l l-Scalar l-Scalar-Plain">maps</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">google</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">marker_cluster</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-</code></pre></div>
+<p>If you don’t want to use marker cluster, you can disable it globally in <code>_config.yml</code>:</p>
+
+<pre><code class="language-yaml">  maps:
+    google:
+      marker_cluster:
+        enabled: false
+</code></pre>
+
 <p>Or you can disable it per single map tag:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>  {% google_map no_cluster %}
-</code></pre></div>
+
+<pre><code>  
+  {% google_map no_cluster %}
+  
+</code></pre>
+
 </div>
 
 <div class="related">
