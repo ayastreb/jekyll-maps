@@ -16,6 +16,8 @@ mkdir _site
 # clone remote repo to "_site"
 git clone https://${GH_TOKEN}@github.com/ayastreb/jekyll-maps.git --branch gh-pages _site
 
+gem install bundler:1.16.1
+
 # build with Jekyll into "_site"
 bundle exec jekyll build
 
