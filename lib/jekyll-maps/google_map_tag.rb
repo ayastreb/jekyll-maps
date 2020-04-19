@@ -32,7 +32,7 @@ HTML
         attributes = []
         attributes << "id='#{@args[:attributes][:id]}'"
         attributes << render_dimensions
-        attributes << render_class if @args[:attributes][:class]
+        attributes << render_class
         attributes.join(" ")
       end
 
@@ -49,7 +49,7 @@ HTML
       def render_class
         css = @args[:attributes][:class]
         css = css.join(" ") if css.is_a?(Array)
-        %(class='#{css}')
+        %(class='#{css} jekyll-map')
       end
 
       private
