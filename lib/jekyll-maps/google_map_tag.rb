@@ -7,11 +7,11 @@ module Jekyll
 
       def initialize(_, args, _)
         @args   = OptionsParser.parse(args)
-        @finder = LocationFinder.new(@args)
         super
       end
 
       def render(context)
+        @finder = LocationFinder.new(@args)
         locations = @finder.find(context.registers[:site], context.registers[:page])
         @args[:attributes][:id] ||= SecureRandom.uuid
 
